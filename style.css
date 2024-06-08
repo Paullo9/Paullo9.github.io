@@ -1,10 +1,14 @@
-/* style.css */
+/* Updated style.css */
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     text-align: center;
+    background: url('background.jpg') no-repeat center center fixed; /* Add a background image */
+    background-size: cover;
+    line-height: 1.6;
+    color: #333; /* Dark grey text for better readability */
 }
 
 header {
@@ -12,6 +16,11 @@ header {
     color: #fff;
     padding: 20px;
     text-align: center;
+}
+
+nav {
+    background-color: #f8f9fa; /* Light grey background */
+    margin-bottom: 20px;
 }
 
 nav ul {
@@ -23,20 +32,25 @@ nav ul {
 
 nav ul li {
     display: inline;
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 nav ul li a {
     color: #333;
     text-decoration: none;
+    padding: 10px 20px;
+    display: inline-block;  /* Makes the padding clickable */
 }
 
 nav ul li a:hover {
-    color: #666;
+    background-color: #1a1aff;
+    color: #fff;
+    transition: background-color 0.3s ease-in-out; /* Smooth transition for hover effect */
 }
 
 main {
     padding: 20px;
+    text-align: left; /* Align text to the left for better readability in main content */
 }
 
 footer {
@@ -44,7 +58,21 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px;
-    position: fixed;
-    bottom: 0;
     width: 100%;
+}
+
+@media (max-width: 768px) {
+    nav ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    footer {
+        position: static;
+        padding: 20px 10px;
+    }
 }

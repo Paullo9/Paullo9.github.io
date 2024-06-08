@@ -1,26 +1,26 @@
-/* Updated style.css */
+/* Modern and sleek style.css */
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 0;
     text-align: center;
-    background: url('background.jpg') no-repeat center center fixed; /* Add a background image */
-    background-size: cover;
+    background: #f4f4f4; /* Soft grey background for a minimalistic look */
+    color: #333; /* Subtle dark grey for readability */
     line-height: 1.6;
-    color: #333; /* Dark grey text for better readability */
 }
 
 header {
-    background-color: #0c13d7;
-    color: #fff;
-    padding: 20px;
+    background-color: #2c3e50; /* Deep blue shade for header */
+    color: #ecf0f1; /* Soft off-white text color */
+    padding: 20px 0;
     text-align: center;
 }
 
 nav {
-    background-color: #f8f9fa; /* Light grey background */
-    margin-bottom: 20px;
+    background-color: #ffffff; /* Pure white background for nav */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for a lifted effect */
+    padding: 10px 0;
 }
 
 nav ul {
@@ -32,39 +32,43 @@ nav ul {
 
 nav ul li {
     display: inline;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 nav ul li a {
-    color: #333;
+    color: #7f8c8d; /* Soft grey color for links */
     text-decoration: none;
-    padding: 10px 20px;
-    display: inline-block;  /* Makes the padding clickable */
+    padding: 8px 15px;
+    transition: color 0.3s;
 }
 
-nav ul li a:hover {
-    background-color: #1a1aff;
-    color: #fff;
-    transition: background-color 0.3s ease-in-out; /* Smooth transition for hover effect */
+nav ul li a:hover, nav ul li a:focus {
+    color: #2c3e50; /* Dark blue to match the header on hover/focus */
 }
 
 main {
     padding: 20px;
-    text-align: left; /* Align text to the left for better readability in main content */
+    text-align: left;
 }
 
 footer {
-    background-color: #0c13d7;
-    color: #fff;
+    background-color: #2c3e50;
+    color: #ecf0f1;
     text-align: center;
-    padding: 10px;
+    padding: 12px 0;
     width: 100%;
+    clear: both; /* Clear fix for any floated elements */
 }
 
 @media (max-width: 768px) {
     nav ul li {
         display: block;
         margin-bottom: 10px;
+        text-align: center; /* Center align the links on smaller screens */
+    }
+
+    nav ul li a {
+        display: block; /* Make the link span the entire list item for easier tapping */
     }
 
     main {

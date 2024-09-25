@@ -1,5 +1,7 @@
 format: jb-book
 root: Index
+defaults:  # The defaults key will be applied to all chapters and sub-sections
+  titlesonly: True
 chapters:
 - file: Abstract.md
 - file: Introduction.md

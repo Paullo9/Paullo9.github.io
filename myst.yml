@@ -13,15 +13,15 @@ site:
   domains:
     - paullobpreis.curve.space
   options:
-    outline_maxdepth: 2
+    outline_maxdepth: 3
     logo: images/site_logo.png
-  
+
   nav:    
     - title: code
       children:
         - title: First steps
-          url: /code/1_First_steps.ipynb
-    
+          url: /code/1_First_steps
+
     - title: experimental
       children:
         - title: TEM
@@ -36,5 +36,5 @@ site:
     - title: cluster
       children:
         - title: connection
-          url: /cluster/Connect_to_OMNI.md
-  
+          url: /cluster/Connect_to_OMNI
+

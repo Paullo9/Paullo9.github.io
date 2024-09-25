@@ -20,9 +20,7 @@ site:
   title: Paul Lobpreis
   logo: images/site_logo.png
   favicon: images/favicon.ico
-  #domains:
-  #  - paullobpreis.com
+  domains:
+    - paullobpreis.curve.space
   options:
     outline_maxdepth: 2
-
-    

@@ -1,13 +1,11 @@
 format: jb-book
-root: index
+root: Index
 chapters:
-- file: Index.md
 - file: Abstract.md
 - file: Introduction.md
 - file: Theory.md
 - file: HPC.md
 - file: Experimental.md
-- file: Reanddis.md
+- file: Resanddis.md
 - file: Conandout.md
 - file: contact.md
-

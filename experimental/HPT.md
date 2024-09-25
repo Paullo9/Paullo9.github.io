@@ -1,7 +1,5 @@
 ---
-cssclasses:
-  - list-cards
-  - list-cards-mobile-full
+title: High-pressure torsion NiCu sample
 ---
 # Description
 The sample was provided by HW and consists of 65 at.% Ni + 35 at.% Cu. It was manufactured using [[high-pressure torsion]] in Japan. The sample underwent homogenization via hot isostatic pressing at 1200°C for 5 hours, followed by helium quenching to room temperature. For thermo-mechanical treatment, high-pressure torsion was applied at 5 GPa, 5 rpm, with 10 full turns. Subsequently, parts of the sample underwent low-temperature annealing at 300°C for 4 weeks.

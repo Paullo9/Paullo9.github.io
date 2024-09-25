@@ -1,8 +1,8 @@
 # See docs at: https://mystmd.org/guide/frontmatter
 version: 1
 project: 
-  title: Paul Lobpreis
-  short_title: PLobpreis
+  title: Four-Dimensional Scanning Transmission Electron Microscopy (4D-STEM) Analysis of NiCu alloy using py4DSTEM on High Performance Computing Cluster
+  short_title: 4D-STEM Analysis of NiCu alloy using py4DSTEM on HPC Cluster
   description: Master's thesis on 4D scanning transmission electron microscopy (4D-STEM) and its applications in materials science.
   github: https://github.com/Paullo9
 
@@ -25,13 +25,13 @@ site:
     - title: experimental
       children:
         - title: TEM
-          url: /TEM
+          url: /experimental/TEM.md
         - title: boron doped diamond
-          url: /boron_doped_diamond
+          url: /experimental/BDD.md
         - title: high pressure torsion
-          url: /TEM
+          url: /experimental/HPT.md
         - title: transfer to cluster
-          url: /TEM
+          url: /experimental/transfer.md
 
     - title: cluster
       children:

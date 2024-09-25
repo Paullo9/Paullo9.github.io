@@ -18,6 +18,9 @@ site:
     - paullobpreis.curve.space
   options:
     outline_maxdepth: 2
+  domains:
+    - paullobpreis.curve.space
+    - paullobpreis.github.io
 
   nav:    
     - title: code
@@ -41,5 +44,3 @@ site:
         - title: connection
           url: /cluster/Connect_to_OMNI.md
   
-  domains:
-    - paullobpreis.curve.space

@@ -40,5 +40,6 @@ site:
       children:
         - title: connection
           url: /cluster/Connect_to_OMNI.md
-
-
+  
+  domains:
+    - paullobpreis.curve.space

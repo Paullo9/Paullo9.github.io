@@ -1,15 +1,20 @@
 # See docs at: https://mystmd.org/guide/frontmatter
 version: 1
-project:
-  id: 4b64e226-f6ef-4307-bf80-08600732e73c
-  # title:
-  # description:
-  # keywords: []
-  # authors: []
-  github: https://github.com/jupyter-book/mystmd-quickstart
+project: 
+  title: Paul Lobpreis
+  short_title: PLobpreis
+  description: Master's thesis on 4D scanning transmission electron microscopy (4D-STEM) and its applications in materials science.
+  github: https://github.com/Paullo9
   # To autogenerate a Table of Contents, run "myst init --write-toc"
+toc:
+  - file: index.md
+  - file: introduction.md
+  - file: 01-paper.md
+  
+abbreviations:
+  4DSTEM: four dimensional scanning transmission electron microscopy
+
 site:
   template: book-theme
-  # options:
-  #   favicon: favicon.ico
-  #   logo: site_logo.png
+  title: Paul Lobpreis
+  logo: site_logo.png

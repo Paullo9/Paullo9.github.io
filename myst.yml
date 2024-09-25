@@ -33,8 +33,6 @@ site:
         - title: transfer to cluster
           url: /experimental/transfer.md
 
-    - title: cluster
-      children:
-        - title: connection
-          url: /cluster/Connect_to_OMNI
+  
+
 

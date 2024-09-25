@@ -2,7 +2,7 @@
 title: My First Article
 date: 2022-05-11
 authors:
-  - name: Mason Moniker
+  - name: Vorname Nachname
     affiliations:
       - University of Europe
 ---

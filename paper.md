@@ -1,4 +1,4 @@
-# How to MyST, without being mystified 🧙
+# Tutorial on how to use markdown
 
 A tutorial to evolve markdown documents and notebooks into structured data
 

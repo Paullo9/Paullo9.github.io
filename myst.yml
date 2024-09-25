@@ -11,6 +11,7 @@ toc:
   - file: introduction.md
   - file: 01-paper.md
 
+
 abbreviations:
   4DSTEM: four dimensional scanning transmission electron microscopy
 
@@ -19,3 +20,9 @@ site:
   title: Paul Lobpreis
   logo: images/site_logo.png
   favicon: images/favicon.ico
+  #domains:
+  #  - paullobpreis.com
+  options:
+    outline_maxdepth: 2
+
+    

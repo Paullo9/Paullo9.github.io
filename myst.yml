@@ -6,11 +6,12 @@ project:
   description: Master's thesis on 4D scanning transmission electron microscopy (4D-STEM) and its applications in materials science.
   github: https://github.com/Paullo9
   # To autogenerate a Table of Contents, run "myst init --write-toc"
-  toc:
-    - file: index.md
-    - file: code.md
-    - file: experimental.md
-    - file: thesis.md
+  # toc:
+  #   - file: index.md
+  #   - file: code.md
+  #   - file: experimental.md
+  #   - file: cluster.md
+  #   - file: thesis.md
 
 abbreviations:
   4DSTEM: four dimensional scanning transmission electron microscopy
@@ -29,14 +30,14 @@ site:
     - title: code
       children:
         - title: First steps
-          url: /thesis
+          url: /code
     
     - title: experimental
       children:
         - title: TEM
           url: /experimental
         - title: boron doped diamond
-          url: /experimental
+          url: /boron_doped_diamond
         - title: high pressure torsion
           url: /experimental
         - title: transfer to cluster

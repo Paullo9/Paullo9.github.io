@@ -1,8 +1,7 @@
-# MyST build outputs
 _build
+
+images/.DS_Store
+
+.DS_Store
+
 data
-
-
-
-# MyST build outputs
-_build

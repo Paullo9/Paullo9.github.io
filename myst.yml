@@ -16,11 +16,9 @@ site:
   favicon: images/favicon.ico
   domains:
     - paullobpreis.curve.space
+    - paullo9.github.io
   options:
     outline_maxdepth: 2
-  domains:
-    - paullobpreis.curve.space
-    - paullobpreis.github.io
 
   nav:    
     - title: code

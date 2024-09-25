@@ -1,5 +1,0 @@
----
-title: boron doped diamond
-
----
-

@@ -6,20 +6,16 @@ project:
   description: Master's thesis on 4D scanning transmission electron microscopy (4D-STEM) and its applications in materials science.
   github: https://github.com/Paullo9
 
-abbreviations:
-  4DSTEM: four dimensional scanning transmission electron microscopy
-
 site:
   template: book-theme
   title: Paul Lobpreis
-  logo: images/site_logo.png
   favicon: images/favicon.ico
   domains:
     - paullobpreis.curve.space
-
   options:
     outline_maxdepth: 2
-
+    logo: images/site_logo.png
+  
   nav:    
     - title: code
       children:

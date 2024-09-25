@@ -32,9 +32,9 @@ site:
         - title: boron doped diamond
           url: /boron_doped_diamond
         - title: high pressure torsion
-          url: /
+          url: /TEM
         - title: transfer to cluster
-          url: /  
+          url: /TEM
 
     - title: cluster
       children:

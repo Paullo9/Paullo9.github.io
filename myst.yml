@@ -2,9 +2,26 @@
 version: 1
 project: 
   title: Four-Dimensional Scanning Transmission Electron Microscopy (4D-STEM) Analysis of NiCu alloy using py4DSTEM on High Performance Computing Cluster
+  subtitle: Master's thesis
   short_title: 4D-STEM Analysis of NiCu alloy using py4DSTEM on HPC Cluster
   description: Master's thesis on 4D scanning transmission electron microscopy (4D-STEM) and its applications in materials science.
   github: https://github.com/Paullo9
+  authors:
+    - name: Paul Lobpreis
+      orcid: 0009-0007-4889-1542
+      corresponding: true
+      email: mail@paullobpreis.com
+      twitter: paullobpreis
+      github: Paullo9
+      affiliation: University of Siegen
+      roles: writing
+      url: https://paullobpreis.com
+  banner: ./images/banner.png
+  # jupyter:
+  #   binder:
+  #     url: https://xhrtcvh6l53u.curvenote.dev/services/binder/
+  #     repo: curvenote/tle-finitevolume
+  #     ref: HEAD
 
 site:
   template: book-theme
@@ -15,24 +32,30 @@ site:
   options:
     outline_maxdepth: 3
     logo: images/site_logo.png
+  actions:
+    - title: See my website!
+      url: https://www.paullobpreis.com
+    - title: Download pdf!
+      url: master_s_thesis.pdf
 
   nav:    
     - title: code
       children:
-        - title: First steps
-          url: /code/1_First_steps
+        - title: notebook test
+          url: /notebook
 
     - title: experimental
       children:
         - title: TEM
-          url: /experimental/TEM.md
+          url: /TEM
         - title: boron doped diamond
-          url: /experimental/BDD.md
+          url: /BDD
         - title: high pressure torsion
           url: /experimental/HPT.md
         - title: transfer to cluster
           url: /experimental/transfer.md
 
-  
-
-
+    - title: cluster
+      children:
+        - title: 1. Connect
+          url: /cluster/Connect_to_OMNI

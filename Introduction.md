@@ -64,7 +64,6 @@ $$
 ![[4DSTEM_Overview.svg]] 
 > *Fig 3*
 
-
 **What is the challenge?**
 - why are the datasets so large? show simple calculation
 - commercial software and open source software available to process data -> different options such as py4dastem, hyperspy, libertem, etc.

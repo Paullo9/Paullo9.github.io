@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
 <meta charset="UTF-8" />
 <meta name="generator" content="LaTeX Lwarp package" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>main</title>
+<title>index — Example</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 
 <script>
@@ -69,50 +70,50 @@ MathJax = {
             useArgument(parser, star ? resultstar : resultnostar);
          },
 
-         // This function implements an ifnextchar macro.
-         IfnextcharFunction(parser, name) {
-           let whichchar = parser.GetArgument(name);
-           if (whichchar.match(/^(?:0x[0-9A-F]+|[0-9]+)$/i)) {
-             // $ syntax highlighting
-             whichchar = String.fromCodePoint(parseInt(whichchar));
-           }
-           const resultnextchar = parser.GetArgument(name);
-           const resultnotnextchar = parser.GetArgument(name);
-           const gotchar = (parser.GetNext() === whichchar);
-           useArgument(parser, gotchar ? resultnextchar : resultnotnextchar);
-         },
+          // This function implements an ifnextchar macro.
+          IfnextcharFunction(parser, name) {
+            let whichchar = parser.GetArgument(name);
+            if (whichchar.match(/^(?:0x[0-9A-F]+|[0-9]+)$/i)) {
+              // $ syntax highlighting
+              whichchar = String.fromCodePoint(parseInt(whichchar));
+            }
+            const resultnextchar = parser.GetArgument(name);
+            const resultnotnextchar = parser.GetArgument(name);
+            const gotchar = (parser.GetNext() === whichchar);
+            useArgument(parser, gotchar ? resultnextchar : resultnotnextchar);
+          },
 
-         // This function implements an ifblank macro.
-         IfblankFunction(parser, name) {
-           const blankarg = parser.GetArgument(name);
-           const resultblank = parser.GetArgument(name);
-           const resultnotblank = parser.GetArgument(name);
-           const isblank = (blankarg.trim() == "");
-           useArgument(parser, isblank ? resultblank : resultnotblank);
-         },
+          // This function implements an ifblank macro.
+          IfblankFunction(parser, name) {
+            const blankarg = parser.GetArgument(name);
+            const resultblank = parser.GetArgument(name);
+            const resultnotblank = parser.GetArgument(name);
+            const isblank = (blankarg.trim() == "");
+            useArgument(parser, isblank ? resultblank : resultnotblank);
+          },
 
-         // This function implements an ifstrequal macro.
-         IfstrequalFunction(parser, name) {
-           const strequalfirst = parser.GetArgument(name);
-           const strequalsecond = parser.GetArgument(name);
-           const resultequal = parser.GetArgument(name);
-           const resultnotequal = parser.GetArgument(name);
-           const isequal = (strequalfirst == strequalsecond);
-           useArgument(parser, isequal ? resultequal : resultnotequal);
-         },
+          // This function implements an ifstrequal macro.
+          IfstrequalFunction(parser, name) {
+            const strequalfirst = parser.GetArgument(name);
+            const strequalsecond = parser.GetArgument(name);
+            const resultequal = parser.GetArgument(name);
+            const resultnotequal = parser.GetArgument(name);
+            const isequal = (strequalfirst == strequalsecond);
+            useArgument(parser, isequal ? resultequal : resultnotequal);
+          },
 
-         // This function modifies the equation numbers.
-         SeteqnumberFunction(parser, name) {
-             // Get the macro parameters
-             const star = parser.GetStar();                  // true if there is a *
-             const optBrackets = parser.GetBrackets(name);   // contents of optional brackets
-             const newsubequations = parser.GetArgument(name); // the subequations argument
-             const neweqsection = parser.GetArgument(name); // the eq section argument
-             const neweqnumber = parser.GetArgument(name);   // the eq number argument
-             MathJax.config.subequations=newsubequations ;   // a string with boolean meaning
-             MathJax.config.section=neweqsection ;           // a string with numeric meaning
-             parser.tags.counter = parser.tags.allCounter = neweqnumber ;
-         }
+          // This function modifies the equation numbers.
+          SeteqnumberFunction(parser, name) {
+              // Get the macro parameters
+              const star = parser.GetStar();                  // true if there is a *
+              const optBrackets = parser.GetBrackets(name);   // contents of optional brackets
+              const newsubequations = parser.GetArgument(name); // the subequations argument
+              const neweqsection = parser.GetArgument(name); // the eq section argument
+              const neweqnumber = parser.GetArgument(name);   // the eq number argument
+              MathJax.config.subequations=newsubequations ;   // a string with boolean meaning
+              MathJax.config.section=neweqsection ;           // a string with numeric meaning
+              parser.tags.counter = parser.tags.allCounter = neweqnumber ;
+          }
 
        });
 
@@ -212,7 +213,66 @@ MathJax = {
 <body>
 
 
-<div class="bodywithoutsidetoc">
+<a id="main-autopage-4"></a>
+<nav class="topnavigation"><a href="index.html" class="linkhome" >
+Home</a></nav>
+
+
+<div class="bodyandsidetoc">
+<div class="sidetoccontainer">
+
+
+<nav class="sidetoc">
+
+
+<div class="sidetoctitle">
+
+<p>
+<span class="sidetocthetitle">Example of using lwarp in the style of tikz.dev</span>
+</p>
+
+<p>
+Contents
+</p>
+</div>
+
+
+<div class="sidetoccontents">
+
+<p>
+<a href="index.html" class="linkhome" >
+Home</a>
+</p>
+
+<p>
+<a href="index-0.html#autosec-5" class="tocsection" >
+<span class="sectionnumber">0.1</span>&#x2003;Introduction</a>
+</p>
+
+
+<p>
+<a href="part1.html#autosec-7" class="tocpart" >
+<span class="sectionnumber">I</span>&#x2003;Part 1</a>
+</p>
+
+
+<p>
+<a href="section1.html#autosec-9" class="tocsection" >
+<span class="sectionnumber">0.2</span>&#x2003;Section 1</a>
+</p>
+
+
+<p>
+<a href="section2.html#autosec-17" class="tocsection" >
+<span class="sectionnumber">0.3</span>&#x2003;Section 2</a>
+</p>
+
+
+</div>
+
+</nav>
+
+</div>
 
 
 <main class="bodycontainer">
@@ -220,7 +280,7 @@ MathJax = {
 
 <section class="textbody">
 
-<a id="main-autofile-0"></a>
+<h1>Example of using lwarp in the style of tikz.dev</h1>
 
 <!--MathJax customizations:-->
 <div data-nosnippet
@@ -349,71 +409,51 @@ MathJax = {
 
 </div>
 
-<a id="main-autopage-1"></a>
-<div class="titlepage">
-
-<h1>Example of using lwarp in the style of tikz.dev</h1>
-
-
-<div class="author">
+<p>
+<h4 id="autosec-5"><span class="sectionnumber">0.1&#x2003;</span>Introduction</h4>
+<a id="main-autopage-5"></a>
+<a id="main-autofile-1"></a>
 
 
-<div class="oneauthor">
+<div class="manual-title-block">
+<div class="manual-title">Example of using lwarp in the style of tikz.dev</div>
+
+
+<div class="manual-version">Version 1</div>
 
 <p>
-Dominik Peters
-</p>
 </div>
 
-</div>
-
-
-<div class="titledate">
-
 <p>
-November 10, 2024
-</p>
-</div>
-
-</div>
-
-<a id="table-of-contents"></a>
-<h3 id="autosec-3">Contents</h3>
-<a id="main-autopage-3"></a>
-
-
-
-<nav class="toc">
-
-<p>
-<a href="index-0.html#autosec-5" class="tocsection" >
-<span class="sectionnumber">0.1</span>&#x2003;Introduction</a>
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque.
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut leo. Cras viverra metus rhoncus sem. Nulla et lectus vestibulum urna fringilla ultrices. Phasellus eu tellus sit amet tortor gravida placerat. Integer sapien est, iaculis
+in, pretium quis, viverra ac, nunc. Praesent eget sem vel leo ultrices bibendum. Aenean faucibus. Morbi dolor nulla, malesuada eu, pulvinar at, mollis ac, nulla. Curabitur auctor semper nulla. Donec varius orci eget risus. Duis nibh mi, congue eu, accumsan eleifend,
+sagittis quis, diam. Duis eget orci sit amet orci dignissim rutrum.
 </p>
 
 
 <p>
-<a href="part1.html#autosec-7" class="tocpart" >
-<span class="sectionnumber">I</span>&#x2003;Part 1</a>
+Nam dui ligula, fringilla a, euismod sodales, sollicitudin vel, wisi. Morbi auctor lorem non justo. Nam lacus libero, pretium at, lobortis vitae, ultricies et, tellus. Donec aliquet, tortor sed accumsan bibendum, erat ligula aliquet magna, vitae ornare odio metus a mi. Morbi ac
+orci et nisl hendrerit mollis. Suspendisse ut massa. Cras nec ante. Pellentesque a nulla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam tincidunt urna. Nulla ullamcorper vestibulum turpis. Pellentesque cursus luctus mauris.
 </p>
 
 
 <p>
-<a href="section1.html#autosec-9" class="tocsection" >
-<span class="sectionnumber">0.2</span>&#x2003;Section 1</a>
+Nulla malesuada porttitor diam. Donec felis erat, congue non, volutpat at, tincidunt tristique, libero. Vivamus viverra fermentum felis. Donec nonummy pellentesque ante. Phasellus adipiscing semper elit. Proin fermentum massa ac quam. Sed diam turpis, molestie vitae,
+placerat a, molestie nec, leo. Maecenas lacinia. Nam ipsum ligula, eleifend at, accumsan nec, suscipit a, ipsum. Morbi blandit ligula feugiat magna. Nunc eleifend consequat lorem. Sed lacinia nulla vitae enim. Pellentesque tincidunt purus vel magna. Integer non enim.
+Praesent euismod nunc eu purus. Donec bibendum quam in tellus. Nullam cursus pulvinar lectus. Donec et mi. Nam vulputate metus eu enim. Vestibulum pellentesque felis eu massa.
 </p>
 
-
-<p>
-<a href="section2.html#autosec-17" class="tocsection" >
-<span class="sectionnumber">0.3</span>&#x2003;Section 2</a>
-</p>
-</nav>
 
 </section>
 
 </main>
 
 </div>
+
+
+<nav class="botnavigation"><a href="index.html" class="linkhome" >
+Home</a></nav>
 
 </body>
 </html>

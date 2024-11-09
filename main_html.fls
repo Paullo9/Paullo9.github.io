@@ -1,4 +1,4 @@
-PWD /Users/paullobpreis/Desktop/tikz.dev-style-master
+PWD /Users/paullobpreis/GitHub/Paullo9.github.io
 INPUT /usr/local/texlive/2024/texmf-var/web2c/luahbtex/lualatex.fmt
 INPUT ./main_html.tex
 OUTPUT main_html.log

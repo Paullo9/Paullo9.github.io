@@ -9,6 +9,6 @@
 \contentsline {chapter}{\numberline {3}{\ignorespaces theory\relax }}{21}{}%
 \contentsline {section}{\numberline {3.1}{\ignorespaces nochwas\relax }}{23}{}%
 \contentsline {section}{\numberline {3.2}{\ignorespaces Imaging with fast electrons\relax }}{25}{}%
-\contentsline {section}{\numberline {3.3}{\ignorespaces Modes of Transmission electron microscopy\relax }}{28}{}%
-\contentsline {section}{\numberline {3.4}{\ignorespaces From STEM to 4D-STEM\relax }}{31}{}%
-\contentsline {section}{\numberline {3.5}{\ignorespaces Aim of this work\relax }}{34}{}%
+\contentsline {section}{\numberline {3.3}{\ignorespaces Modes of Transmission electron microscopy\relax }}{27}{}%
+\contentsline {section}{\numberline {3.4}{\ignorespaces From STEM to 4D-STEM\relax }}{29}{}%
+\contentsline {section}{\numberline {3.5}{\ignorespaces Aim of this work\relax }}{31}{}%

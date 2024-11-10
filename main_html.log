@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.11.9)  10 NOV 2024 01:24
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.11.9)  10 NOV 2024 01:28
  restricted system commands enabled.
 **main_html.tex
 (./main_html.tex
@@ -1602,12 +1602,11 @@ Done.
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 \openout6 = main_html.sidetoc
 
-[2]
-No file main_html.toc.
+[2] (./main_html.toc)
 \tf@toc=\write8
 
 \openout8 = main_html.toc
-[3]
+ [3]
 File: "javascript.txt"  (verbatim)
  [4] (./main_html.sidetoc)
 
@@ -1621,15 +1620,11 @@ Package lipsum Warning: Unknown language 'latin'. Hyphenation patterns for
 File: "javascript.txt"  (verbatim)
  [6] (./main_html.sidetoc) [7]
 File: "javascript.txt"  (verbatim)
- [8] (./main_html.sidetoc) [9] [10]
-
-LaTeX Warning: Reference `LWRlateximage-main-1' on page 11 undefined on input l
-ine 63.
-
-[11]
+ [8] (./main_html.sidetoc) [9] [10] [11]
 LaTeX Font Info:    Trying to load font information for U+msa on input line 65.
 
- (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 65.
@@ -1671,7 +1666,7 @@ Package lwarp Warning: The section name:
 (lwarp)                  \section{
 (lwarp)                    \texorpdfstring
 (lwarp)                      {Name with math}{Unique name, no math}
-(lwarp)                  }  on input line 84.
+(lwarp)                  }  on input line 81.
 
 File: "javascript.txt"  (verbatim)
 [22] (./main_html.sidetoc) (./Introduction/Introduction.tex [23]
@@ -1683,49 +1678,13 @@ LaTeX Warning: Reference `fig:electronww' on page 25 undefined on input line 14
 .
 
 [25]
-
-! LaTeX Error: File `Introduction/figures/electronww' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.20 ...twidth]{Introduction/figures/electronww.pdf}
-                                                  
-? 
-[26]
 File: "javascript.txt"  (verbatim)
- [27] (./main_html.sidetoc) [28]
-
-! LaTeX Error: File `Introduction/figures/TEM_modi' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.41 ...extwidth]{Introduction/figures/TEM_modi.pdf}
-                                                  
-? 
-[29]
+ [26] (./main_html.sidetoc) [27]
 File: "javascript.txt"  (verbatim)
- [30] (./main_html.sidetoc)
-
-LaTeX Warning: Reference `fig:4dstem' on page 31 undefined on input line 62.
-
-[31]
-
-! LaTeX Error: File `Introduction/figures/4DSTEM_Overview' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.68 ...h]{Introduction/figures/4DSTEM_Overview.pdf}
-                                                  
-? 
-[32]
+ [28] (./main_html.sidetoc) [29]
 File: "javascript.txt"  (verbatim)
- [33] (./main_html.sidetoc)) [34] (./main_html.aux)
+ [30]
+(./main_html.sidetoc)) [31] (./main_html.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
@@ -1733,9 +1692,6 @@ L3 programming layer <2020/03/25>
 
 
 LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 --------------------------------
 WARNING: Something may fail.
@@ -1747,26 +1703,26 @@ Definition changed:    4D81B79284057560BC61DF11EF723AC8
 ))
 
 Here is how much of LuaTeX's memory you used:
- 30535 strings out of 476447
+ 30461 strings out of 476447
  477379,1977958 words of node,token memory allocated
  545 words of node memory still in use:
    5 hlist, 1 vlist, 2 rule, 4 kern, 1 glyph, 10 attribute, 68 glue_spec, 10 att
 ribute_list nodes
    avail lists: 1:1,2:3177,3:5389,4:75,5:872,6:994,7:51334,8:39,9:2476,10:48,11:
-464
- 50774 multiletter control sequences out of 65536+600000
+544
+ 50695 multiletter control sequences out of 65536+600000
  40 fonts using 2750599 bytes
- 153i,5n,158p,680b,789s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 153i,5n,158p,576b,789s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman8-bold.otf><
 /usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf
 ></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmmono8-regular.ot
 f></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><
 /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
 /local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on main_html.pdf (34 pages, 218385 bytes).
+Output written on main_html.pdf (31 pages, 228912 bytes).
 
-PDF statistics: 147 PDF objects out of 1000 (max. 8388607)
- 98 compressed objects within 1 object stream
+PDF statistics: 138 PDF objects out of 1000 (max. 8388607)
+ 92 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 

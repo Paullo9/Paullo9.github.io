@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.11.9)  10 NOV 2024 01:10
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.11.9)  10 NOV 2024 01:24
  restricted system commands enabled.
 **main_html.tex
 (./main_html.tex
@@ -1385,10 +1385,77 @@ Package lwarp Info: Using the lwarp HTML version of package `hyperref',
 (lwarp)             do not attempt to patch lwarp's version of `hyperref'.)
 (lwarp)              on input line 25.
 )
-(./lwarp-filename-maker.tex Including 'warpHTML' comment.
-\openout3 = comment_html.cut
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lwarp/lwarp-siunitx.sty
+Package lwarp Info: Using package `siunitx',
+(lwarp)             and adding lwarp modifications, including options,
+(lwarp)              on input line 28.
+Package: lwarp-siunitx 2023-11-14
 
-Straight input of comment_html.cut. (./comment_html.cut))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/siunitx/siunitx.sty
+Package: siunitx 2024-02-15 v3.3.12 A comprehensive (SI) units package
+\l__siunitx_number_uncert_offset_int=\count374
+\l__siunitx_number_exponent_fixed_int=\count375
+\l__siunitx_number_min_decimal_int=\count376
+\l__siunitx_number_min_integer_int=\count377
+\l__siunitx_number_round_precision_int=\count378
+\l__siunitx_number_lower_threshold_int=\count379
+\l__siunitx_number_upper_threshold_int=\count380
+\l__siunitx_number_group_first_int=\count381
+\l__siunitx_number_group_size_int=\count382
+\l__siunitx_number_group_minimum_int=\count383
+\l__siunitx_angle_tmp_dim=\dimen272
+\l__siunitx_angle_marker_box=\box72
+\l__siunitx_angle_unit_box=\box73
+\l__siunitx_compound_count_int=\count384
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/translations/translations.sty
+Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages
+ (CN)
+)
+\l__siunitx_table_tmp_box=\box74
+\l__siunitx_table_tmp_dim=\dimen273
+\l__siunitx_table_column_width_dim=\dimen274
+\l__siunitx_table_integer_box=\box75
+\l__siunitx_table_decimal_box=\box76
+\l__siunitx_table_uncert_box=\box77
+\l__siunitx_table_before_box=\box78
+\l__siunitx_table_after_box=\box79
+\l__siunitx_table_before_dim=\dimen275
+\l__siunitx_table_carry_dim=\dimen276
+\l__siunitx_unit_tmp_int=\count385
+\l__siunitx_unit_position_int=\count386
+\l__siunitx_unit_total_int=\count387
+)
+
+Package lwarp Warning: Something may fail. A definition has changed:
+(lwarp)                siunitx: \siunitx_number_format:nN
+(lwarp)                76C110239433A6FC6441704392C40200
+(lwarp)                 on input line 33.
+
+
+Package lwarp Warning: Something may fail. A definition has changed:
+(lwarp)                siunitx: \__siunitx_print_aux:nn
+(lwarp)                4D81B79284057560BC61DF11EF723AC8
+(lwarp)                 on input line 86.
+
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lwarp/lwarp-common-mathjax-siunit
+x.sty Including 'warpMathJax' comment.
+\openout3 = comment_mathjax.cut
+ Straight input of comment_mathjax.cut.
+(./comment_mathjax.cut
+---
+Package lwarp: Processing MathJax customizations for siunitx.
+  This may take a moment.
+---
+)) Including 'warpMathJax' comment.
+\openout3 = comment_mathjax.cut
+ Straight input of comment_mathjax.cut.
+(./comment_mathjax.cut)) (./lwarp-filename-maker.tex
+Including 'warpHTML' comment.
+\openout3 = comment_html.cut
+ Straight input of comment_html.cut.
+(./comment_html.cut))
 \LWR@userspaperwidth=\skip79
 \LWR@userspaperheight=\skip80
 \LWR@usersmarginparwidth=\skip81
@@ -1404,36 +1471,50 @@ Package: lwarp-cleveref 2018/03/27
 (/usr/local/texlive/2024/texmf-dist/tex/latex/cleveref/cleveref.sty
 Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
 ))
+Package translations Info: No language package found. I am going to use `englis
+h' as default language. on input line 18.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lwarp/lwarp-color.sty
+Package lwarp Info: Replacing package `color' with the lwarp version,
+(lwarp)             and discarding options, on input line 18.
+Package: lwarp-color 2016/07/10
+)
 (./main_html.aux)
 \openout1 = main_html.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-7.
+8.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lwarp/lwarp-geometry.sty
 Package lwarp Info: Replacing package `geometry' with the lwarp version,
 (lwarp)             and discarding options, on input line 20.
 Package: lwarp-geometry 2018/04/16
 )
-\LWR@colorminipagebox=\box72
+\LWR@colorminipagebox=\box80
+
+
+Package lwarp Warning: Lwarp provides emulation for MathJax when used
+(lwarp)                with the siunitx package.
+(lwarp)                Place \sisetup before \begin{document}.
+(lwarp)                Many optional arguments are ignored.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: luatex
@@ -1471,16 +1552,16 @@ Package: lwarp-geometry 2018/04/16
 
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count374
-\scratchdimen=\dimen272
-\scratchbox=\box73
-\nofMPsegments=\count375
-\nofMParguments=\count376
+\scratchcounter=\count388
+\scratchdimen=\dimen277
+\scratchbox=\box81
+\nofMPsegments=\count389
+\nofMParguments=\count390
 \everyMPshowfont=\toks41
-\MPscratchCnt=\count377
-\MPscratchDim=\dimen273
-\MPnumerator=\count378
-\makeMPintoPDFobject=\count379
+\MPscratchCnt=\count391
+\MPscratchDim=\dimen278
+\MPnumerator=\count392
+\makeMPintoPDFobject=\count393
 \everyMPtoPDFconversion=\toks42
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/lwarp/lwarp-epstopdf-base.sty
 Package lwarp Info: Using package `epstopdf-base',
@@ -1497,7 +1578,14 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 )))
-Package lwarp Info: Removing background hook on input line 17.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/translations/translations-basic-d
+ictionary-english.trsl
+File: translations-basic-dictionary-english.trsl (english translation file `tra
+nslations-basic-dictionary')
+)
+Package translations Info: loading dictionary `translations-basic-dictionary' f
+or `english'. on input line 18.
+Package lwarp Info: Removing background hook on input line 18.
 
 \openout5 = main-images.txt
 File: "javascript.txt"  (verbatim)
@@ -1514,11 +1602,12 @@ Done.
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 \openout6 = main_html.sidetoc
 
-[2] (./main_html.toc)
+[2]
+No file main_html.toc.
 \tf@toc=\write8
 
 \openout8 = main_html.toc
- [3]
+[3]
 File: "javascript.txt"  (verbatim)
  [4] (./main_html.sidetoc)
 
@@ -1532,14 +1621,18 @@ Package lipsum Warning: Unknown language 'latin'. Hyphenation patterns for
 File: "javascript.txt"  (verbatim)
  [6] (./main_html.sidetoc) [7]
 File: "javascript.txt"  (verbatim)
- [8] (./main_html.sidetoc) [9] [10] [11]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 64.
+ [8] (./main_html.sidetoc) [9] [10]
 
+LaTeX Warning: Reference `LWRlateximage-main-1' on page 11 undefined on input l
+ine 63.
 
-(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
+[11]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 65.
+
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 64.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 65.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1552,31 +1645,128 @@ File: "javascript.txt"  (verbatim)
  [16] (./main_html.sidetoc) [17]
 File: "javascript.txt"  (verbatim)
  [18]
-(./main_html.sidetoc) [19] (./main_html.aux)
+(./main_html.sidetoc) [19]
+File: "javascript.txt"  (verbatim)
+ [20] (./main_html.sidetoc) [21]
+
+Package lwarp Warning: The section name:
+(lwarp)                ``section3'',
+(lwarp)                at the line number listed below,
+(lwarp)                generates the filename
+(lwarp)                ``section3'',
+(lwarp)                which appears to be a duplicate. There is a
+(lwarp)                previous section with an identical or similar name.
+(lwarp)                A unique file number has been appended to the file name
+(lwarp)                of this and any further similar files.
+(lwarp)                This number may change as sections are added/removed,
+(lwarp)                and obsolete HTML files may result.
+(lwarp)                To remove these files, use lwarpmk cleanall.
+(lwarp)                (While generating file names, Lwarp sanitizes math,
+(lwarp)                most symbols, and a few common short words,
+(lwarp)                and this may cause a conflict.)
+(lwarp)                To avoid duplicate filenames, use the optional
+(lwarp)                short Table of Contents entry:
+(lwarp)                  \section[Unique name, no math]{Name with math}
+(lwarp)                or use \texorpdfstring, from the hyperref package:
+(lwarp)                  \section{
+(lwarp)                    \texorpdfstring
+(lwarp)                      {Name with math}{Unique name, no math}
+(lwarp)                  }  on input line 84.
+
+File: "javascript.txt"  (verbatim)
+[22] (./main_html.sidetoc) (./Introduction/Introduction.tex [23]
+File: "javascript.txt"  (verbatim)
+ [24]
+(./main_html.sidetoc)
+
+LaTeX Warning: Reference `fig:electronww' on page 25 undefined on input line 14
+.
+
+[25]
+
+! LaTeX Error: File `Introduction/figures/electronww' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.20 ...twidth]{Introduction/figures/electronww.pdf}
+                                                  
+? 
+[26]
+File: "javascript.txt"  (verbatim)
+ [27] (./main_html.sidetoc) [28]
+
+! LaTeX Error: File `Introduction/figures/TEM_modi' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.41 ...extwidth]{Introduction/figures/TEM_modi.pdf}
+                                                  
+? 
+[29]
+File: "javascript.txt"  (verbatim)
+ [30] (./main_html.sidetoc)
+
+LaTeX Warning: Reference `fig:4dstem' on page 31 undefined on input line 62.
+
+[31]
+
+! LaTeX Error: File `Introduction/figures/4DSTEM_Overview' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.68 ...h]{Introduction/figures/4DSTEM_Overview.pdf}
+                                                  
+? 
+[32]
+File: "javascript.txt"  (verbatim)
+ [33] (./main_html.sidetoc)) [34] (./main_html.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+--------------------------------
+WARNING: Something may fail.
+Definition changed: siunitx: \siunitx_number_format:nN
+Definition changed:    76C110239433A6FC6441704392C40200
+Definition changed: siunitx: \__siunitx_print_aux:nn
+Definition changed:    4D81B79284057560BC61DF11EF723AC8
+--------------------------------
 ))
 
 Here is how much of LuaTeX's memory you used:
- 26371 strings out of 476447
- 244403,1977958 words of node,token memory allocated
- 521 words of node memory still in use:
-   5 hlist, 1 vlist, 2 rule, 4 kern, 1 glyph, 4 attribute, 68 glue_spec, 4 attri
-bute_list nodes
-   avail lists: 1:1,2:1821,3:4931,4:75,5:869,6:538,7:26712,8:1,9:1562,10:47,11:4
-50
- 46697 multiletter control sequences out of 65536+600000
- 37 fonts using 2355471 bytes
- 153i,5n,158p,576b,720s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.ot
-f></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmmono8-regular.o
-tf>
-Output written on main_html.pdf (19 pages, 82981 bytes).
+ 30535 strings out of 476447
+ 477379,1977958 words of node,token memory allocated
+ 545 words of node memory still in use:
+   5 hlist, 1 vlist, 2 rule, 4 kern, 1 glyph, 10 attribute, 68 glue_spec, 10 att
+ribute_list nodes
+   avail lists: 1:1,2:3177,3:5389,4:75,5:872,6:994,7:51334,8:39,9:2476,10:48,11:
+464
+ 50774 multiletter control sequences out of 65536+600000
+ 40 fonts using 2750599 bytes
+ 153i,5n,158p,680b,789s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman8-bold.otf><
+/usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf
+></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmmono8-regular.ot
+f></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
+/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on main_html.pdf (34 pages, 218385 bytes).
 
-PDF statistics: 81 PDF objects out of 1000 (max. 8388607)
- 53 compressed objects within 1 object stream
+PDF statistics: 147 PDF objects out of 1000 (max. 8388607)
+ 98 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 

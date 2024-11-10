@@ -1,11 +1,8 @@
-\CustomizeMathJax{\newcommand{\intertext}[1]{\text{#1}\notag \\}}
-\CustomizeMathJax{\let\Hat\hat}
-\CustomizeMathJax{\let\Check\check}
-\CustomizeMathJax{\let\Tilde\tilde}
-\CustomizeMathJax{\let\Acute\acute}
-\CustomizeMathJax{\let\Grave\grave}
-\CustomizeMathJax{\let\Dot\dot}
-\CustomizeMathJax{\let\Ddot\ddot}
-\CustomizeMathJax{\let\Breve\breve}
-\CustomizeMathJax{\let\Bar\bar}
-\CustomizeMathJax{\let\Vec\vec}
+\CustomizeMathJax{\let\unit\si}
+\CustomizeMathJax{\let\qty\SI}
+\CustomizeMathJax{\let\qtylist\SIlist}
+\CustomizeMathJax{\let\qtyrange\SIrange}
+\CustomizeMathJax{\let\numproduct\num}
+\CustomizeMathJax{\let\qtyproduct\SI}
+\CustomizeMathJax{\let\complexnum\num}
+\CustomizeMathJax{\newcommand{\complexqty}[3][]{(\complexnum{#2})\si{#3}}}

@@ -5,4 +5,10 @@
 \contentsline {subsection}{\numberline {1.1.2}{\ignorespaces Details\relax }}{11}{}%
 \contentsline {section}{\numberline {1.2}{\ignorespaces Section 2\relax }}{15}{}%
 \contentsline {chapter}{\numberline {2}{\ignorespaces Chapter 2\relax }}{17}{}%
-\contentsline {section}{\numberline {2.1}{\ignorespaces Section 3\relax }}{19}{}%
+\contentsline {section}{\numberline {2.1}{\ignorespaces sonstwas\relax }}{19}{}%
+\contentsline {chapter}{\numberline {3}{\ignorespaces theory\relax }}{21}{}%
+\contentsline {section}{\numberline {3.1}{\ignorespaces nochwas\relax }}{23}{}%
+\contentsline {section}{\numberline {3.2}{\ignorespaces Imaging with fast electrons\relax }}{25}{}%
+\contentsline {section}{\numberline {3.3}{\ignorespaces Modes of Transmission electron microscopy\relax }}{28}{}%
+\contentsline {section}{\numberline {3.4}{\ignorespaces From STEM to 4D-STEM\relax }}{31}{}%
+\contentsline {section}{\numberline {3.5}{\ignorespaces Aim of this work\relax }}{34}{}%

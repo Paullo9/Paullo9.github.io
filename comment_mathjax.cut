@@ -1,8 +1,0 @@
-\CustomizeMathJax{\let\unit\si}
-\CustomizeMathJax{\let\qty\SI}
-\CustomizeMathJax{\let\qtylist\SIlist}
-\CustomizeMathJax{\let\qtyrange\SIrange}
-\CustomizeMathJax{\let\numproduct\num}
-\CustomizeMathJax{\let\qtyproduct\SI}
-\CustomizeMathJax{\let\complexnum\num}
-\CustomizeMathJax{\newcommand{\complexqty}[3][]{(\complexnum{#2})\si{#3}}}

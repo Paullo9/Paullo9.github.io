@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.11.9)  10 NOV 2024 00:56
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.11.9)  10 NOV 2024 01:10
  restricted system commands enabled.
 **main_html.tex
 (./main_html.tex
@@ -1533,21 +1533,26 @@ File: "javascript.txt"  (verbatim)
  [6] (./main_html.sidetoc) [7]
 File: "javascript.txt"  (verbatim)
  [8] (./main_html.sidetoc) [9] [10] [11]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 66.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 64.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 66.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 64.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [12] [13]
-[14] [15]
 File: "javascript.txt"  (verbatim)
- [16] (./main_html.sidetoc) [17] (./main_html.aux)
+
+[14] (./main_html.sidetoc) [15]
+File: "javascript.txt"  (verbatim)
+ [16] (./main_html.sidetoc) [17]
+File: "javascript.txt"  (verbatim)
+ [18]
+(./main_html.sidetoc) [19] (./main_html.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
@@ -1555,23 +1560,23 @@ L3 programming layer <2020/03/25>
 ))
 
 Here is how much of LuaTeX's memory you used:
- 26368 strings out of 476447
+ 26371 strings out of 476447
  244403,1977958 words of node,token memory allocated
  521 words of node memory still in use:
    5 hlist, 1 vlist, 2 rule, 4 kern, 1 glyph, 4 attribute, 68 glue_spec, 4 attri
 bute_list nodes
-   avail lists: 1:1,2:1821,3:4931,4:76,5:869,6:538,7:26712,8:1,9:1562,10:47,11:5
-88
- 46708 multiletter control sequences out of 65536+600000
+   avail lists: 1:1,2:1821,3:4931,4:75,5:869,6:538,7:26712,8:1,9:1562,10:47,11:4
+50
+ 46697 multiletter control sequences out of 65536+600000
  37 fonts using 2355471 bytes
- 153i,5n,158p,576b,773s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 153i,5n,158p,576b,720s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.ot
 f></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmmono8-regular.o
 tf>
-Output written on main_html.pdf (17 pages, 71550 bytes).
+Output written on main_html.pdf (19 pages, 82981 bytes).
 
-PDF statistics: 75 PDF objects out of 1000 (max. 8388607)
- 49 compressed objects within 1 object stream
+PDF statistics: 81 PDF objects out of 1000 (max. 8388607)
+ 53 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 

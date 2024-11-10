@@ -559,4 +559,8 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
 INPUT ./javascript.txt
 INPUT ./main_html.sidetoc
+INPUT ./javascript.txt
+INPUT ./main_html.sidetoc
+INPUT ./javascript.txt
+INPUT ./main_html.sidetoc
 INPUT ./main_html.aux

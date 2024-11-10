@@ -16,31 +16,32 @@
 
 \begin{document}
 
-\title{Example of using lwarp in the style of tikz.dev}
-\author{Dominik Peters}
+\title{Test of Latex to html with lwarp, potentially for my masters thesis}
+\author{Paul Lobpreis}
 
 \HTMLTitle{Example}
 \HTMLTitleAfterSection
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \maketitle
 
 \label{table-of-contents}
 
 \tableofcontents
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section[index]{Introduction}
 
 % The titlepage
 
 \BlockClassSingle{manual-title-block}{%
-\BlockClassSingle{manual-title}{Example of using lwarp in the style of tikz.dev}
+\BlockClassSingle{manual-title}{Hier der Titel der Arbeit}
 \BlockClassSingle{manual-version}{Version 1}
 }
 
 \lipsum[1-3]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\part[part1]{Part 1}
-
+\chapter[chapter1]{Chapter 1}
 \section[section1]{Section 1}
 \lipsum[1-3]
 
@@ -55,25 +56,30 @@ Mathematics:
 \subsection{Details}
 \lipsum[4]
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{tikzpicture}
-    % smiley face
-    \draw[fill=yellow] (0,0) circle (1cm);
-    \draw (0,0) circle (1cm);
-    \draw (0.3,0.3) circle (0.1cm);
-    \draw (-0.3,0.3) circle (0.1cm);
-    % draw a smile
-    \draw (-0.5,-0.5) arc (0:-180:0.5 and 0.2);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\draw[fill=orange](0,0) circle (2cm);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{tikzpicture}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{More Details}
-\lipsum[5-8]
-
-\subsection{Even More Details}
-\lipsum[9-14]
 
 
 \section[section2]{Section 2}
 \lipsum[4-7]
+
+
+
+
+
+
+
+\chapter[chapter2]{Chapter 2}
+\section[section3]{Section 3}
+
+
+
 
 \end{document}
 

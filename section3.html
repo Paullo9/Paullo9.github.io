@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
 <meta charset="UTF-8" />
 <meta name="generator" content="LaTeX Lwarp package" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>main</title>
+<title>section3 — Example</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 
 <script>
@@ -69,50 +70,50 @@ MathJax = {
             useArgument(parser, star ? resultstar : resultnostar);
          },
 
-         // This function implements an ifnextchar macro.
-         IfnextcharFunction(parser, name) {
-           let whichchar = parser.GetArgument(name);
-           if (whichchar.match(/^(?:0x[0-9A-F]+|[0-9]+)$/i)) {
-             // $ syntax highlighting
-             whichchar = String.fromCodePoint(parseInt(whichchar));
-           }
-           const resultnextchar = parser.GetArgument(name);
-           const resultnotnextchar = parser.GetArgument(name);
-           const gotchar = (parser.GetNext() === whichchar);
-           useArgument(parser, gotchar ? resultnextchar : resultnotnextchar);
-         },
+          // This function implements an ifnextchar macro.
+          IfnextcharFunction(parser, name) {
+            let whichchar = parser.GetArgument(name);
+            if (whichchar.match(/^(?:0x[0-9A-F]+|[0-9]+)$/i)) {
+              // $ syntax highlighting
+              whichchar = String.fromCodePoint(parseInt(whichchar));
+            }
+            const resultnextchar = parser.GetArgument(name);
+            const resultnotnextchar = parser.GetArgument(name);
+            const gotchar = (parser.GetNext() === whichchar);
+            useArgument(parser, gotchar ? resultnextchar : resultnotnextchar);
+          },
 
-         // This function implements an ifblank macro.
-         IfblankFunction(parser, name) {
-           const blankarg = parser.GetArgument(name);
-           const resultblank = parser.GetArgument(name);
-           const resultnotblank = parser.GetArgument(name);
-           const isblank = (blankarg.trim() == "");
-           useArgument(parser, isblank ? resultblank : resultnotblank);
-         },
+          // This function implements an ifblank macro.
+          IfblankFunction(parser, name) {
+            const blankarg = parser.GetArgument(name);
+            const resultblank = parser.GetArgument(name);
+            const resultnotblank = parser.GetArgument(name);
+            const isblank = (blankarg.trim() == "");
+            useArgument(parser, isblank ? resultblank : resultnotblank);
+          },
 
-         // This function implements an ifstrequal macro.
-         IfstrequalFunction(parser, name) {
-           const strequalfirst = parser.GetArgument(name);
-           const strequalsecond = parser.GetArgument(name);
-           const resultequal = parser.GetArgument(name);
-           const resultnotequal = parser.GetArgument(name);
-           const isequal = (strequalfirst == strequalsecond);
-           useArgument(parser, isequal ? resultequal : resultnotequal);
-         },
+          // This function implements an ifstrequal macro.
+          IfstrequalFunction(parser, name) {
+            const strequalfirst = parser.GetArgument(name);
+            const strequalsecond = parser.GetArgument(name);
+            const resultequal = parser.GetArgument(name);
+            const resultnotequal = parser.GetArgument(name);
+            const isequal = (strequalfirst == strequalsecond);
+            useArgument(parser, isequal ? resultequal : resultnotequal);
+          },
 
-         // This function modifies the equation numbers.
-         SeteqnumberFunction(parser, name) {
-             // Get the macro parameters
-             const star = parser.GetStar();                  // true if there is a *
-             const optBrackets = parser.GetBrackets(name);   // contents of optional brackets
-             const newsubequations = parser.GetArgument(name); // the subequations argument
-             const neweqsection = parser.GetArgument(name); // the eq section argument
-             const neweqnumber = parser.GetArgument(name);   // the eq number argument
-             MathJax.config.subequations=newsubequations ;   // a string with boolean meaning
-             MathJax.config.section=neweqsection ;           // a string with numeric meaning
-             parser.tags.counter = parser.tags.allCounter = neweqnumber ;
-         }
+          // This function modifies the equation numbers.
+          SeteqnumberFunction(parser, name) {
+              // Get the macro parameters
+              const star = parser.GetStar();                  // true if there is a *
+              const optBrackets = parser.GetBrackets(name);   // contents of optional brackets
+              const newsubequations = parser.GetArgument(name); // the subequations argument
+              const neweqsection = parser.GetArgument(name); // the eq section argument
+              const neweqnumber = parser.GetArgument(name);   // the eq number argument
+              MathJax.config.subequations=newsubequations ;   // a string with boolean meaning
+              MathJax.config.section=neweqsection ;           // a string with numeric meaning
+              parser.tags.counter = parser.tags.allCounter = neweqnumber ;
+          }
 
        });
 
@@ -212,7 +213,78 @@ MathJax = {
 <body>
 
 
-<div class="bodywithoutsidetoc">
+<a id="main-autopage-18"></a>
+<nav class="topnavigation"><a href="index.html" class="linkhome" >
+Home</a></nav>
+
+
+<div class="bodyandsidetoc">
+<div class="sidetoccontainer">
+
+
+<nav class="sidetoc">
+
+
+<div class="sidetoctitle">
+
+<p>
+<span class="sidetocthetitle">Test of Latex to html with lwarp, potentially for my masters thesis</span>
+</p>
+
+<p>
+Contents
+</p>
+</div>
+
+
+<div class="sidetoccontents">
+
+<p>
+<a href="index.html" class="linkhome" >
+Home</a>
+</p>
+
+<p>
+<a href="index-0.html#autosec-5" class="tocsection" >
+<span class="sectionnumber">0.1</span>&#x2003;Introduction</a>
+</p>
+
+
+<p>
+<a href="chapter1.html#autosec-7" class="tocchapter" >
+<span class="sectionnumber">1</span>&#x2003;Chapter 1</a>
+</p>
+
+
+<p>
+<a href="section1.html#autosec-9" class="tocsection" >
+<span class="sectionnumber">1.1</span>&#x2003;Section 1</a>
+</p>
+
+
+<p>
+<a href="section2.html#autosec-15" class="tocsection" >
+<span class="sectionnumber">1.2</span>&#x2003;Section 2</a>
+</p>
+
+
+<p>
+<a href="chapter2.html#autosec-17" class="tocchapter" >
+<span class="sectionnumber">2</span>&#x2003;Chapter 2</a>
+</p>
+
+
+<p>
+<a href="section3.html#autosec-19" class="tocsection" >
+<span class="sectionnumber">2.1</span>&#x2003;Section 3</a>
+</p>
+
+
+</div>
+
+</nav>
+
+</div>
 
 
 <main class="bodycontainer">
@@ -220,7 +292,7 @@ MathJax = {
 
 <section class="textbody">
 
-<a id="main-autofile-0"></a>
+<h1>Test of Latex to html with lwarp, potentially for my masters thesis</h1>
 
 <!--MathJax customizations:-->
 <div data-nosnippet
@@ -349,83 +421,21 @@ MathJax = {
 
 </div>
 
-<a id="main-autopage-1"></a>
-<div class="titlepage">
-
-<h1>Test of Latex to html with lwarp, potentially for my masters thesis</h1>
-
-
-<div class="author">
-
-
-<div class="oneauthor">
-
 <p>
-Paul Lobpreis
-</p>
-</div>
+<h4 id="autosec-19"><span class="sectionnumber">2.1&#x2003;</span>Section 3</h4>
+<a id="main-autopage-19"></a>
+<a id="main-autofile-6"></a>
 
-</div>
-
-
-<div class="titledate">
-
-<p>
-November 10, 2024
-</p>
-</div>
-
-</div>
-
-<a id="table-of-contents"></a>
-<h3 id="autosec-3">Contents</h3>
-<a id="main-autopage-3"></a>
-
-
-
-<nav class="toc">
-
-<p>
-<a href="index-0.html#autosec-5" class="tocsection" >
-<span class="sectionnumber">0.1</span>&#x2003;Introduction</a>
-</p>
-
-
-<p>
-<a href="chapter1.html#autosec-7" class="tocchapter" >
-<span class="sectionnumber">1</span>&#x2003;Chapter 1</a>
-</p>
-
-
-<p>
-<a href="section1.html#autosec-9" class="tocsection" >
-<span class="sectionnumber">1.1</span>&#x2003;Section 1</a>
-</p>
-
-
-<p>
-<a href="section2.html#autosec-15" class="tocsection" >
-<span class="sectionnumber">1.2</span>&#x2003;Section 2</a>
-</p>
-
-
-<p>
-<a href="chapter2.html#autosec-17" class="tocchapter" >
-<span class="sectionnumber">2</span>&#x2003;Chapter 2</a>
-</p>
-
-
-<p>
-<a href="section3.html#autosec-19" class="tocsection" >
-<span class="sectionnumber">2.1</span>&#x2003;Section 3</a>
-</p>
-</nav>
-
+<a id="main-autofile-last"></a>
 </section>
 
 </main>
 
 </div>
+
+
+<nav class="botnavigation"><a href="index.html" class="linkhome" >
+Home</a></nav>
 
 </body>
 </html>

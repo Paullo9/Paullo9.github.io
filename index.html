@@ -144,7 +144,26 @@
 
     <div class="abstract" id="abstract">
       <h2>Abstract</h2>
-      <p>TODO: Add Abstract</p>
+      <p>
+      Large-scale measurements of local crystallographic orientation, often referred to as 4D-STEM, open up new avenues in electron microscopy.
+      In this technique, a two-dimensional (2D) array of positions in real-space is scanned, and a two-dimensional diffraction pattern, typically a CBED pattern, is recorded for each of these positions; hence the name 4D-STEM. [[@ophusRecordingUsing4DSTEM2014]]
+      <p>
+      <p>
+      This is mainly feasible due to advances in computational power and modern direct electron detectors (DEDs) with increased dynamic range, reduced noise, and shorter read-out times compared to traditional detection techniques such as scintillator-coupled cameras.
+      However, DEDs are expensive and are not readily available in many institutions.
+      This work demonstrates the successful use of a conventional scintillator-based Gatan Continuum CMOS camera for the acquisition of 4D STEM data.
+      The camera has a sensor format of $2048 \times 2048$ with 18-micron pixels and a frame rate of $94.2$ fps without binning.
+      Compared to state-of-the-art DEDs, scintillator-based cameras have slower readout speeds and generate larger data sets.
+      These can be hundreds of gigabytes in size and require specialized hardware and software to analyze. 
+      In view of these challenges, the experimental parameters such as convergence angle, step size, camera length, etc. were first optimized iteratively for the measurements.
+      Subsequently, a workflow for processing large data sets was developed using **py4DSTEM**, an open source Python library to analyze 4D-STEM data sets, on a HPC cluster. [[@ophusQuantitativeScanningTransmission2023]]
+        
+      <p>  
+      The experiments focused on the investigation of gold nanoparticles and a high-pressure torsion (HPT) Ni-Cu alloy.
+      Using **py4DSTEM**, images were simulated using virtual detectors, including bright field (BF), annular dark-field (ADF) and off-axis dark field (OADF) images, providing insights into the grain size, structure, and orientation of the samples.
+      In addition, a script-based ACOM was implemented to automatically generate orientation mappings using a template matching procedure. 
+      This work demonstrates the effectiveness of HPC and script-based analysis for the computational challenges of large 4D-STEM data sets.
+      </p>
     </div>
 
     <!-- Step 3 End: Add your paper abstract -->

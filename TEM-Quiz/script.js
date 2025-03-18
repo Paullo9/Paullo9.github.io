@@ -2,14 +2,14 @@ const questions = [
     {
       question: "At which accelerating voltage does an FEI Talos F200X typically operate?",
       mediaType: "image",
-      mediaSrc: "media/talos_f200x.jpg",
+      mediaSrc: "media/ewald_sphere.pdf",
       options: ["100 kV", "200 kV", "300 kV"],
       correct: 1,
       feedback: "FEI Talos F200X typically operates at 200 kV."
     },
     {
       question: "What does the Ewald sphere help explain in electron diffraction?",
-      media: {type: "image", src: "ewald_sphere.png"},
+      media: {type: "image", src: "ewald_sphere.pdf"},
       options: [
         "Resolution limit of microscopes",
         "Geometric construction to visualize diffraction conditions",

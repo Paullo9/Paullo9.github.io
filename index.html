@@ -1,328 +1,201 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Main Step: Edit below title -->
-    <title>Four-Dimensional Scanning Transmission Electron Microscopy (4D-STEM) Analysis of NiCu alloy using py4DSTEM on High Performance Computing Cluster</title>
+<html lang=\"en\">
+<head>
+  <meta charset=\"UTF-8\">
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+  <title>Your Name - Personal Website</title>
+  <link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap\" rel=\"stylesheet\">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f7fa;
+      color: #444;
+      max-width: 900px;
+      margin: auto;
+      padding: 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
 
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="" />
-    <meta
-      name="keywords"
-      content="research papers, academic papers, AI research, robotics research, machine learning, published papers, scientific papers, academic journals"
-    />
-    <!-- <meta name="author" content="Research Paper Platform" />
-    <meta name="robots" content="index, follow" />
-    <meta
-      name="robots"
-      content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
-    /> -->
+    h1, h2 {
+      color: #222;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
 
-    <!-- Open Graph Meta Tags (For Social Media Sharing) -->
-    <!-- <meta
-      property="og:title"
-      content="Research Papers - Explore Cutting-Edge Research"
-    />
-    <meta
-      property="og:description"
-      content=""
-    />
-    <meta property="og:image" content="path-to-your-image.jpg" />
-    <meta property="og:url" content="https://www.yourwebsite.com" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Research Paper Platform" /> -->
+    a {
+      color: #3498db;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
 
-    <!-- Twitter Meta Tags (For Twitter Sharing) -->
-    <!-- <meta
-      name="twitter:title"
-      content="Research Papers - Explore Cutting-Edge Research"
-    />
-    <meta
-      name="twitter:description"
-      content=""
-    />
-    <meta name="twitter:image" content="path-to-your-image.jpg" />
-    <meta name="twitter:card" content="summary_large_image" /> -->
+    a:hover {
+      color: #2980b9;
+    }
 
-    <!-- Canonical Link -->
-    <!-- <link rel="canonical" href="https://www.yourwebsite.com" /> -->
+    .section {
+      margin-bottom: 50px;
+    }
 
-    <!-- Favicon for different platforms -->
-    <link
-      rel="icon"
-      href="Assets/Favicon/favicon.ico"
-      sizes="256x256"
-      type="image/ico"
-    />
+    .projects ul, .blog ul {
+      list-style: none;
+      padding: 0;
+    }
 
+    .projects li, .blog li {
+      margin-bottom: 20px;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 3px rgba(0,0,0,0.05);
+    }
 
-    <link rel="stylesheet" type="text/css" href="style.css" />
-  </head>
-  <body>
-    <nav class="nav">
-      <a href="#abstract">Abstract</a>
-      <a href="#introduction">Introduction</a>
-      <a href="#methodology">Methodology</a>
-      <a href="#results">Results</a>
-      <a href="#conclusion">Conclusion</a>
-      <button class="toggle-btn" onclick="toggleDarkMode()">
-        Toggle Dark Mode
-      </button>
-    </nav>
+    .contact a {
+      display: inline-block;
+      margin-right: 15px;
+    }
 
-    <!-- Step 1 Start: Header Part -->
+    footer {
+      text-align: center;
+      color: #999;
+      margin-top: 60px;
+      padding-top: 15px;
+      border-top: 1px solid #eaeaea;
+    }
 
-    <!-- 
-    Remove if not applicable
-    Edit below  text
-    Add URL link by removing # for each authers. Link can be GitHub, LinkedIn, Google Schooler, Website or other
-    -->
+    /* Tic-Tac-Toe Game Styles */
+    #game {
+      display: grid;
+      grid-template-columns: repeat(3, 60px);
+      gap: 5px;
+      justify-content: center;
+      margin: 20px auto;
+    }
 
-    <div class="header">
-      <h1>Four-Dimensional Scanning Transmission Electron Microscopy (4D-STEM) Analysis of NiCu alloy using py4DSTEM on High Performance Computing Cluster</h1>
-      <div class="authors">
-        <p>
-          <a href="#">Lobpreis, Paul Jakob</a><sup>1</sup>,
-        </p>
-        <p>
-          <sup>1</sup>University of Siegen, Germany
-        </p>
-        <p>
-          <sup>1</sup
-          ><a href="mailto:mail@paullobpreis.com">mail@paullobpreis.com</a>
-        </p>
-        <p>📌 Master's Thesis
-      </div>
-    </div>
+    .cell {
+      width: 60px;
+      height: 60px;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      border-radius: 4px;
+      box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+    }
 
-    <!-- Step 1 End: Header Part -->
-    <!-- Step 2 Start: Button for links -->
+    .cell:hover {
+      background-color: #ecf0f1;
+    }
 
-    <!-- 
-    Add URL links for each buttons according to name mentioned
-    Remove # and add the link
-    Add new button link if required
-    Remove this step if not applicable
-    -->
+    #resetBtn {
+      margin: 15px auto;
+      display: block;
+      padding: 8px 15px;
+      cursor: pointer;
+      border-radius: 4px;
+      border: none;
+      background-color: #3498db;
+      color: #fff;
+      font-size: 14px;
+    }
 
-    <div class="buttons">
-      <a href="#" target="_blank">Paper</a>
-      <a href="#" target="_blank">Code</a>
-      <a href="#" target="_blank">Datacubes</a>
-      <a href="#bibtex">BibTex</a>
-    </div>
+    #resetBtn:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
 
-    <!-- Step 2 End: Button for links -->
+  <header>
+    <h1>Your Name</h1>
+    <p>A professional summary highlighting your skills, interests, and achievements.</p>
+  </header>
 
-    <!-- Step 3 Start: Add your paper abstract -->
+  <section class=\"section projects\">
+    <h2>Highlighted Projects & Research</h2>
+    <ul>
+      <li>
+        <strong><a href=\"#\">Project or Thesis Title</a></strong><br>
+        A concise yet informative description outlining key points of your project or research.
+      </li>
+      <li>
+        <strong><a href=\"#\">Another Notable Project</a></strong><br>
+        Brief overview emphasizing results and contributions.
+      </li>
+    </ul>
+  </section>
 
-    <!-- 
-    Please do not remove below H2 heading tag. Add your HTML code after H2 HTML tag or add text inside P HTML tag. 
-    Remove this step if not applicable
-    -->
+  <section class=\"section blog\">
+    <h2>Latest Blog Posts</h2>
+    <ul>
+      <li><a href=\"#\">Engaging Blog Post Title</a> - Date published</li>
+      <li><a href=\"#\">Another Interesting Blog Post</a> - Date published</li>
+    </ul>
+  </section>
 
-    <!-- Single YouTube Video -->
-    <div class="video-section">
-      <h3>Demo Video</h3>
-      <div class="video-container">
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/watch?v=tV4hCOZm41Y"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <p>
-        This video demonstates the basic principle of the 4D-STEM technique.
-      </p>
-    </div>
+  <section class=\"section game\">
+    <h2>Play Tic-Tac-Toe</h2>
+    <div id=\"game\"></div>
+    <button id=\"resetBtn\">Restart Game</button>
+  </section>
 
-    <div class="abstract" id="abstract">
-      <h2>Abstract</h2>
-      <p>TODO: Add Abstract </p>
-    </div>
+  <section class=\"section contact\">
+    <h2>Get in Touch</h2>
+    <p>
+      <a href=\"mailto:youremail@example.com\">Email</a>
+      <a href=\"https://github.com/yourprofile\">GitHub</a>
+      <a href=\"https://linkedin.com/in/yourprofile\">LinkedIn</a>
+    </p>
+  </section>
 
-    <!-- Step 3 End: Add your paper abstract -->
+  <footer>
+    &copy; 2025 Your Name - All Rights Reserved
+  </footer>
 
-    <!-- Step 4 Start: Add your paper introduction -->
+  <script>
+    let currentPlayer = 'X';
+    let board = ['', '', '', '', '', '', '', '', ''];
 
-    <!-- 
-    Please do not remove below H2 heading tag. Add your HTML code after H2 HTML tag or add text inside P HTML tag. 
-    Remove this step if not applicable
-    -->
+    const cells = Array.from({length: 9}, (_, index) => {
+      const cell = document.createElement('div');
+      cell.classList.add('cell');
+      cell.addEventListener('click', () => handleCellClick(index));
+      document.getElementById('game').appendChild(cell);
+      return cell;
+    });
 
-    <div class="content-section" id="introduction">
-      <h2>Introduction</h2>
-      <p>TODO: Add Introduction</p>
-    </div>
+    function handleCellClick(index) {
+      if (board[index] || checkWinner()) return;
+      board[index] = currentPlayer;
+      cells[index].textContent = currentPlayer;
+      if (checkWinner()) {
+        setTimeout(() => alert(`${currentPlayer} wins!`), 100);
+      } else if (board.every(cell => cell)) {
+        setTimeout(() => alert('It\'s a draw!'), 100);
+      } else {
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+      }
+    }
 
-    <!-- Step 4 End: Add your paper introduction -->
+    function checkWinner() {
+      const winningCombos = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6]
+      ];
+      return winningCombos.some(combo =>
+        combo.every(index => board[index] === currentPlayer)
+      );
+    }
 
-    <!-- Step 5 Start: Add your paper methodology -->
+    document.getElementById('resetBtn').onclick = () => {
+      board.fill('');
+      cells.forEach(cell => cell.textContent = '');
+      currentPlayer = 'X';
+    };
+  </script>
 
-    <!-- 
-    Please do not remove below H2 heading tag. Add your HTML code after H2 HTML tag or add text inside P HTML tag. 
-    Remove this step if not applicable
-    -->
-
-    <div class="content-section" id="methodology">
-      <h2>Methodology</h2>
-      <p>TODO: Add Methodology</p>
-      <ul>
-        <li>TODO</li>
-        <li>TODO</li>
-      </ul>
-    </div>
-
-    <!-- Step 5 End: Add your paper methodology -->
-
-    <!-- Step 6 Start: Add your paper results -->
-
-    <!-- 
-    Please do not remove below H2 heading tag. Add your HTML code after H2 HTML tag or add text inside P HTML tag. 
-    Remove this step if not applicable
-    Below have pre-build code for:
-    -> 3 Images Carousel
-    -> 3 Videos Carousel
-    -> Single YouTube Video
-    -> YouTube Video List
-    If you do not need those, remove them.
-    How to add YouTube Video:
-    -> Go to the video page
-    -> Click Share Button and Click <> Mark
-    -> This will give <iframe></iframe> tag code
-    -> Replace below <iframe></iframe> tag with your code
-    -->
-
-    <div class="content-section" id="results">
-      <h2>Results</h2>
-      <p>TODO: Add Results</p>
-      <ul>
-        <li>TODO</li>
-        <li>TODO</li>
-      </ul>
-    </div>
-
-    <!-- 3 Images Carousel -->
-    <h3>Image Gallery</h3>
-    <div class="carousel-container" id="imageCarousel">
-      <div class="carousel-track">
-        <div class="carousel-slide">
-          <img src="Assets/4DSTEM_Overview.pdf" alt="Slide 1" />
-        </div>
-        <div class="carousel-slide">
-          <img src="Assets/CBED_alpha.pdf" alt="Slide 2" />
-        </div>
-        <div class="carousel-slide">
-          <img src="Assets/CBED_SAD.pdf" alt="Slide 3" />
-        </div>
-        <div class="carousel-slide">
-          <img src="Assets/cluster.pdf" alt="Slide 4" />
-        </div>
-        <div class="carousel-slide">
-          <img src="Assets/detectors.pdf" alt="Slide 5" />
-        </div>
-        <div class="carousel-slide">
-          <img src="Assets/electronww.pdf" alt="Slide 6" />
-        </div>
-        <div class="carousel-slide">
-          <img src="Assets/TEM_modi.pdf" alt="Slide 7" />
-        </div>
-        <div class="carousel-slide">
-          <img src="Assets/TEM.pdf" alt="Slide 8" />
-        </div>
-      </div>
-      <button class="carousel-button prev">←</button>
-      <button class="carousel-button next">→</button>
-      <div class="carousel-indicators"></div>
-    </div>
-
-
-
-
-    <!-- Step 6 End: Add your paper results -->
-
-    <!-- Step 7 Start: Add your paper conclusion -->
-
-    <!-- 
-    Please do not remove below H2 heading tag. Add your HTML code after H2 HTML tag or add text inside P HTML tag. 
-    Remove this step if not applicable
-    -->
-
-    <div class="content-section" id="conclusion">
-      <h2>Conclusion</h2>
-      <p>TODO: Add Conclusion</p>
-    </div>
-
-    <!-- Step 7 End: Add your paper conclusion -->
-
-    <!-- Step 8 Start: Add your paper references -->
-
-    <!-- 
-    Please only edit below between CODE tags - TODOs
-    Remove this step if not applicable
-    -->
-
-    <div class="bibtex-section" id="bibtex">
-      <h2>BibTeX</h2>
-      <button class="bibtex-copy-button" onclick="copyBibTeX()">
-        Copy to Clipboard
-      </button>
-      <pre>
-        <!-- Please edit only below details -->
-        <code class="language-bibtex">
-          @thesis{Lobpreis_4DSTEM_2025,
-            title={Four-Dimensional Scanning Transmission Electron Microscopy (4D-STEM) Analysis of NiCu alloy using py4DSTEM on High Performance Computing Cluster},
-            author={[Lobpreis, Paul Jakob]},
-            year={2025},
-          }
-        </code>
-      </pre>
-    </div>
-
-    <!-- Step 8 End: Add your paper references -->
-
-    <!-- Step 9 Start: Add your paper acknowledgement -->
-
-    <!-- 
-    Please do not remove below H2 heading tag. Add your HTML code after H2 HTML tag or add text inside P HTML tag. 
-    Remove this step if not applicable
-    -->
-
-    <div class="content-section" id="acknowledgement">
-      <h2>Acknowledgement</h2>
-      <p>TODO: Add Acknowledgement if applicable or remove this</p>
-    </div>
-
-    <!-- Step 9 End: Add your paper acknowledgement -->
-
-    <div class="footer">
-      <!-- Step 10 Start: Edit footer -->
-      <p>© 2025 Paul Lobpreis. All rights reserved.</p>
-      <!-- Step 10 End: Edit footer -->
-      <!-- Please do not remove below code. -->
-      <p>
-        Website template free to borrow from
-        <a
-          href="https://github.com/indramal/iNdra-GitHub-Page-Template-For-Resarch"
-          >here</a
-        >.
-      </p>
-       <div>
-          <!-- Please remove below code of page count or edit indragithubpagetemplate with your name. -->
-    <img src="https://profile-counter.glitch.me/paullo9/count.svg" alt="Profile Counter">
-</div>
-
-    <!-- Do not edit below button -->
-    <button class="scrollUpBtn" id="scrollUpBtn" onclick="scrollToTop()">
-      ⬆
-    </button>
-
-    <script src="script.js"></script>
-  </body>
+</body>
 </html>

@@ -1,86 +1,12 @@
-/* 1) Reset & base */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  font-family: system-ui, sans-serif;
-  line-height: 1.5;
-  --gap: 1rem;
-  --thumb-size: 200px;
-}
-
+/* style.css */
 body {
-  color: #333;
-  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: sans-serif;
+  margin: 2rem;
 }
-
-header {
-  text-align: center;
-  padding: var(--gap);
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-}
-
-h1 {
-  margin-bottom: 0.5em;
-  font-size: 2rem;
-}
-
-/* 2) Gallery grid */
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--thumb-size), 1fr));
-  gap: var(--gap);
-  padding: var(--gap);
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.art-item {
-  text-decoration: none;
-  color: inherit;
-  background: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.art-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.art-item .thumb {
-  width: 100%;
-  height: var(--thumb-size);
-  background: #ddd;
-}
-
-/* 3) Example placeholders you’ll replace with real CSS art */
-
-.art-01 { background: repeating-linear-gradient(45deg, #a2d9ce 0, #a2d9ce 10px, #fff 10px, #fff 20px); }
-.art-02 { background: radial-gradient(circle at center, #f6b8b8, #e06969); }
-
-.art-item span {
-  display: block;
-  padding: var(--gap);
-  text-align: center;
-  font-weight: bold;
-}
-
-/* 4) Footer */
-
-footer {
-  text-align: center;
-  padding: var(--gap);
-  font-size: 0.9rem;
-  color: #666;
+canvas {
+  border: 2px solid #333;
+  margin-bottom: 1rem;
 }

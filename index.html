@@ -1,34 +1,16 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Pure CSS Art Gallery</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Click the Box!</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>Pure CSS Art Gallery</h1>
-    <p>All art built with just HTML & CSS. Click any thumbnail to explore.</p>
-  </header>
-
-  <main class="gallery">
-    <!-- Example art items -->
-    <a href="art-piece-01.html" class="art-item">
-      <div class="thumb art-01"></div>
-      <span>Art Piece #1</span>
-    </a>
-    <a href="art-piece-02.html" class="art-item">
-      <div class="thumb art-02"></div>
-      <span>Art Piece #2</span>
-    </a>
-    <!-- When you add art-piece-03.html etc., just copy one of these blocks -->
-  </main>
-
-  <footer>
-    <p>© 2025 Your Name</p>
-  </footer>
-
-  <script src="script.js"></script>
+  <h1>Click the Box!</h1>
+  <canvas id="gameCanvas" width="400" height="400"></canvas>
+  <p>Score: <span id="score">0</span></p>
+  <script src="game.js"></script>
 </body>
 </html>

@@ -3,20 +3,40 @@
 <head>
   <meta charset="utf-8">
   <title>Paul Lobpreis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="media/index/favicon.png" type="image/png">
+  <style>
+    :root { --bg:#ffffff; --fg:#111; --accent:#0ea5e9; --muted:#555; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#0b0f16; --fg:#e8eef6; --accent:#7dd3fc; --muted:#9ab; }
+    }
+    body { margin:0; background:var(--bg); color:var(--fg); font-family:system-ui, sans-serif; }
+    header { display:flex; align-items:center; gap:.75rem; padding:.8rem 1rem; border-bottom:1px solid #0001; }
+    header img { width:28px; height:28px; }
+    nav { margin-left:auto; display:flex; gap:.8rem; }
+    nav a { text-decoration:none; color:var(--fg); padding:.35rem .6rem; border:1px solid #0001; border-radius:.5rem; }
+    nav a:hover { border-color:var(--accent); }
+    main { padding:1rem; }
+    .muted { color:var(--muted); }
+  </style>
 </head>
 <body>
   <header>
-    <img src="media/index/logo.png" alt="Logo" width="80">
-    <h1>Paul Lobpreis</h1>
+    <img src="media/index/logo.png" alt="Logo">
+    <strong>Paul Lobpreis</strong>
+    <nav>
+      <a href="/">Home</a>
+      <a href="cv.html">CV</a>
+    </nav>
   </header>
 
-  <main>  
-    <p>Welcome to my website.</p>
+  <main>
+    <h1>Welcome</h1>
+    <p class="muted">This is my minimal site. More soon.</p>
+    <p>
+      <a href="cv.html">View CV</a> ·
+      <a href="media/cv.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
+    </p>
   </main>
-
-  <footer>
-    <p>&copy; 2025 Paul Lobpreis</p>
-
 </body>
 </html>

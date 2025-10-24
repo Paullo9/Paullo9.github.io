@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CV — Paul Lobpreis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="media/index/logo.png" type="image/png">
+  <style>
+    :root { --bg:#ffffff; --fg:#111; --accent:#0ea5e9; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#0b0f16; --fg:#e8eef6; --accent:#7dd3fc; }
+    }
+    body { margin:0; background:var(--bg); color:var(--fg); font-family:system-ui, sans-serif; }
+    header { display:flex; align-items:center; gap:.75rem; padding:.8rem 1rem; border-bottom:1px solid #0001; }
+    header a { color:var(--fg); text-decoration:none; border:1px solid #0001; padding:.3rem .55rem; border-radius:.5rem; }
+    header a:hover { border-color:var(--accent); }
+    main { padding: 0; }
+    iframe { width:100%; height: calc(100vh - 60px); border:0; }
+    .fallback { padding:1rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/">← Home</a>
+    <strong>CV</strong>
+    <span style="margin-left:auto">
+      <a href="media/paul/cv.pdf" target="_blank" rel="noopener">Open PDF</a>
+    </span>
+  </header>
+
+  <main>
+    <!-- Embed your PDF; keep a fallback link below -->
+    <iframe src="media/paul/cv.pdf" title="CV PDF"></iframe>
+    <div class="fallback">If the PDF doesn’t load, <a href="media/paul/cv.pdf" target="_blank" rel="noopener">open it here</a>.</div>
+  </main>
+</body>
+</html>

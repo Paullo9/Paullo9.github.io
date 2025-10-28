@@ -27,15 +27,23 @@
     <nav>
       <a href="/">Home</a>
       <a href="cv.html">CV</a>
-      <a href="projects.html">Projects</a>
-      <a href="room.html">View the 3D room</a>
+      <a href="tem.html">View the 3D room</a>
     </nav>
   </header>
 
-
-  <main>
-    <h1>Welcome to My Personal Website</h1>
-    <p class="muted">This is a placeholder for future content.</p>
+<body>
+  <model-viewer
+    src="media/TEM/TEM_polycam.glb"
+    alt="3D scan of a room"
+    camera-controls
+    auto-rotate
+    interaction-prompt="when-focused"
+    exposure="1"
+    shadow-intensity="0.8"
+    environment-image="neutral"
+    touch-action="pan-y">
+  </model-viewer>
+</body>
 
 
 </body>

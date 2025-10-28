@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Room Viewer — Paul Lobpreis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Load the <model-viewer> web component -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    html, body { margin:0; height:100%; background:#0b0f16; }
+    model-viewer { width:100%; height:100%; }
+  </style>
+</head>
+<body>
+  <model-viewer
+    src="media/paul/room.glb"
+    alt="3D scan of a room"
+    camera-controls
+    auto-rotate
+    interaction-prompt="when-focused"
+    exposure="1"
+    shadow-intensity="0.8"
+    environment-image="neutral"
+    touch-action="pan-y">
+    <!-- Fallback if WebGL/component not available -->
+    <div style="color:#fff; padding:1rem; font-family:system-ui;">
+      If the 3D viewer doesn't load, <a href="media/paul/room.glb" style="color:#7dd3fc">download the model</a>.
+    </div>
+  </model-viewer>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Lab Walkthrough (Three.js minimal)</title>
+<style>
+  html,body { height:100%; margin:0; background:#0b0f16; color:#e8eef6; font-family:system-ui, sans-serif; }
+  #c { display:block; width:100vw; height:100vh; }
+  #hud { position:fixed; inset:0; pointer-events:none; }
+  #crosshair { position:absolute; left:50%; top:50%; width:14px; height:14px; margin-left:-7px; margin-top:-7px;
+    border:2px solid #ffffff99; border-radius:50%; box-shadow:0 0 0 2px #0006; }
+  #hint { position:absolute; left:50%; transform:translateX(-50%); bottom:18px; font-size:13px; opacity:.8; }
+  #overlay {
+    position:fixed; inset:0; background:#0b0f16; display:flex; align-items:center; justify-content:center; gap:1rem; flex-direction:column;
+  }
+  #overlay button {
+    pointer-events:auto; padding:.75rem 1rem; border-radius:.6rem; border:1px solid #ffffff22; background:#ffffff10; color:#e8eef6; font-weight:600;
+  }
+  #panel {
+    position:fixed; right:16px; top:16px; width:min(320px, 90vw); max-height:60vh; overflow:auto;
+    background:#121826; border:1px solid #ffffff22; border-radius:12px; padding:12px; display:none;
+  }
+  #panel img { width:100%; height:auto; border-radius:8px; margin-top:.5rem; }
+  #panel h3 { margin:.2rem 0 .2rem; font-size:1rem; }
+  #panel p { margin:.25rem 0 0; font-size:.9rem; line-height:1.3; color:#cfd8e3; }
+</style>
+</head>
+<body>
+
+<canvas id="c"></canvas>
+
+<div id="hud">
+  <div id="crosshair" aria-hidden="true"></div>
+  <div id="hint">Click to start • WASD to move • Mouse to look • Click an object for info</div>
+</div>
+
+<div id="overlay" role="dialog" aria-label="Start">
+  <h1 style="margin:0;font-size:1.2rem;color:#e8eef6;">Lab Walkthrough</h1>
+  <p style="margin:0;color:#cfd8e3;opacity:.9;">Click “Enter” to enable mouse look.</p>
+  <button id="enter">Enter</button>
+</div>
+
+<aside id="panel" aria-live="polite">
+  <h3 id="p-title">Object</h3>
+  <img id="p-img" alt="" />
+  <p id="p-desc"></p>
+</aside>
+
+<script type="module">
+/* === Config ============================================================= */
+const MODEL_URL = 'media/TEM/TEM_polycam.glb'; // change this path to your GLB
+// Minimal demo metadata. You can move this into a separate JSON later.
+const META = {
+  // Keys should match mesh or parent names, or userData.infoKey in your GLB
+  "TEM": {
+    title: "Talos F200X TEM",
+    img:  "media/info/tem.jpg",
+    desc: "200 kV transmission electron microscope with 4D-STEM, EDX, and EELS options."
+  },
+  "FIB": {
+    title: "FIB/SEM",
+    img:  "media/info/fib.jpg",
+    desc: "Focused Ion Beam for lamella preparation and site-specific cross-sections."
+  }
+};
+
+/* === Imports ============================================================ */
+import * as THREE from 'https://unpkg.com/three@0.161.0/build/three.module.js';
+import { GLTFLoader } from 'https://unpkg.com/three@0.161.0/examples/jsm/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'https://unpkg.com/three@0.161.0/examples/jsm/loaders/DRACOLoader.js';
+import { PointerLockControls } from 'https://unpkg.com/three@0.161.0/examples/jsm/controls/PointerLockControls.js';
+
+/* === Basic setup ======================================================== */
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias:true });
+renderer.setSize(innerWidth, innerHeight);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0b0f16);
+
+// Camera
+const camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, 0.1, 2000);
+camera.position.set(0, 1.6, 3); // eye height
+
+// Lights
+scene.add(new THREE.HemisphereLight(0xffffff, 0x202032, 0.6));
+const dir = new THREE.DirectionalLight(0xffffff, 0.8);
+dir.position.set(5,10,5);
+scene.add(dir);
+
+/* === Controls (WASD + mouse look) ====================================== */
+const controls = new PointerLockControls(camera, document.body);
+const overlay = document.getElementById('overlay');
+const enterBtn = document.getElementById('enter');
+enterBtn.addEventListener('click', () => {
+  controls.lock();
+});
+controls.addEventListener('lock', () => overlay.style.display = 'none');
+controls.addEventListener('unlock', () => overlay.style.display = 'flex');
+
+const keys = {};
+addEventListener('keydown', e => keys[e.code] = true);
+addEventListener('keyup',   e => keys[e.code] = false);
+const velocity = new THREE.Vector3();
+const speed = 3; // meters per second
+function move(dt){
+  velocity.set(0,0,0);
+  if(keys['KeyW']) velocity.z -= speed;
+  if(keys['KeyS']) velocity.z += speed;
+  if(keys['KeyA']) velocity.x -= speed;
+  if(keys['KeyD']) velocity.x += speed;
+  controls.moveRight( velocity.x * dt );
+  controls.moveForward( velocity.z * dt );
+}
+
+/* === Load GLB =========================================================== */
+const loader = new GLTFLoader();
+const draco = new DRACOLoader();
+draco.setDecoderPath('https://unpkg.com/three@0.161.0/examples/jsm/libs/draco/');
+loader.setDRACOLoader(draco);
+
+loader.load(MODEL_URL, (gltf) => {
+  // optional: scale/rotate/position your scan
+  gltf.scene.traverse(obj => {
+    // Make selection easier by giving cursor targets a name or userData.infoKey in Blender
+    if (!obj.name) obj.name = obj.uuid.slice(0,8);
+  });
+  scene.add(gltf.scene);
+}, undefined, (err)=> {
+  console.error('Failed to load model', err);
+});
+
+/* === Click-to-inspect (raycast at center) =============================== */
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2(0,0); // center
+const panel = document.getElementById('panel');
+const pTitle = document.getElementById('p-title');
+const pImg   = document.getElementById('p-img');
+const pDesc  = document.getElementById('p-desc');
+
+function showInfo(meta){
+  pTitle.textContent = meta.title || 'Object';
+  if (meta.img){ pImg.src = meta.img; pImg.style.display='block'; }
+  else { pImg.removeAttribute('src'); pImg.style.display='none'; }
+  pDesc.textContent = meta.desc || '';
+  panel.style.display = 'block';
+}
+
+addEventListener('click', (e) => {
+  if (!controls.isLocked) return; // only when in FPS mode
+  raycaster.setFromCamera(mouse, camera);
+  const hits = raycaster.intersectObjects(scene.children, true);
+  if (hits.length) {
+    let obj = hits[0].object;
+    // bubble up to find a meaningful name or userData.infoKey
+    while (obj && !obj.userData?.infoKey && !META[obj.name] && obj.parent) obj = obj.parent;
+    const key = obj?.userData?.infoKey || obj?.name;
+    const meta = META[key];
+    if (meta) showInfo(meta);
+  }
+});
+
+/* === Animate ============================================================ */
+let last = performance.now();
+function tick(now){
+  const dt = Math.min(0.05, (now - last)/1000); last = now;
+  move(dt);
+  renderer.render(scene, camera);
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+
+addEventListener('resize', () => {
+  camera.aspect = innerWidth/innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+</script>
+</body>
+</html>

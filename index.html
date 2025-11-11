@@ -4,33 +4,24 @@
   <meta charset="utf-8">
   <title>Paul Lobpreis</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="media/index/favicon.png" type="image/png">
-  <link rel="icon" href="/media/index/favicon-32.png" sizes="32x32" type="image/png">
-  <link rel="icon" href="/media/index/favicon-16.png" sizes="16x16" type="image/png">
-  <link rel="apple-touch-icon" href="/media/index/apple-touch-icon.png" sizes="180x180">
-  <link rel="icon" href="/media/index/favicon-512.png" sizes="512x512" type="image/png">
 
-  <style>
-    :root { --bg:#ffffff; --fg:#111; --accent:#0ea5e9; --muted:#555; }
-    @media (prefers-color-scheme: dark) {
-      :root { --bg:#0b0f16; --fg:#e8eef6; --accent:#7dd3fc; --muted:#9ab; }
-    }
-    body { margin:0; background:var(--bg); color:var(--fg); font-family:system-ui, sans-serif; }
-    header { display:flex; align-items:center; gap:.75rem; padding:.8rem 1rem; border-bottom:1px solid #0001; }
-    header img { width:28px; height:28px; }
-    nav { margin-left:auto; display:flex; gap:.8rem; }
-    nav a { text-decoration:none; color:var(--fg); padding:.35rem .6rem; border:1px solid #0001; border-radius:.5rem; }
-    nav a:hover { border-color:var(--accent); }
-    main { padding:1rem; }
-    model-viewer {
-      width: 100%;
-      height: 80vh;
-      background-color: var(--bg);
-    }
-  </style>
+  <!-- Theme color for mobile UIs (updated by theme.js) -->
+  <meta id="theme-color" name="theme-color" content="#ffffff">
 
-  <!-- Import the <model-viewer> library -->
+  <!-- Favicons (light/dark aware for theme.js) -->
+  <link rel="icon" href="media/index/favicon-32.png" sizes="32x32" type="image/png" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="media/index/favicon-16.png" sizes="16x16" type="image/png" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="media/index/favicon-32-dark.png" sizes="32x32" type="image/png" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="media/index/favicon-16-dark.png" sizes="16x16" type="image/png" media="(prefers-color-scheme: dark)">
+  <link rel="apple-touch-icon" href="media/index/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" href="media/index/favicon-512.png" sizes="512x512" type="image/png">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- <model-viewer> library -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <!-- Theme switcher -->
+  <script src="theme.js" defer></script>
 </head>
 
 <body>
@@ -38,9 +29,10 @@
     <img src="media/index/logo.png" alt="Logo">
     <strong>Paul Lobpreis</strong>
     <nav>
-      <a href="/">Home</a>
+      <a href="index.html">Home</a>
       <a href="cv.html">CV</a>
     </nav>
+    <button id="theme-toggle" aria-label="Toggle theme">Theme: auto</button>
   </header>
 
   <main>
@@ -55,6 +47,11 @@
       environment-image="neutral"
       touch-action="pan-y">
     </model-viewer>
+
+    <noscript>
+      <p style="padding:1rem">This page shows an interactive 3D model using Web Components.
+      Please enable JavaScript to view it.</p>
+    </noscript>
   </main>
 </body>
 </html>

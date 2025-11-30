@@ -1,12 +1,90 @@
-/* style.css */
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: sans-serif;
-  margin: 2rem;
+/* Base theme (light) */
+:root {
+  --bg:#ffffff; --fg:#111; --muted:#555;
+  --accent:#0ea5e9; --border:#0001;
+  --shadow:0 1px 2px rgba(0,0,0,.06);
 }
-canvas {
-  border: 2px solid #333;
-  margin-bottom: 1rem;
+
+/* Dark mode via OS preference */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#0b0f16; --fg:#e8eef6; --muted:#9ab;
+    --accent:#7dd3fc; --border:#fff1;
+  }
+}
+
+/* Manual override */
+html[data-theme="light"] {
+  --bg:#ffffff; --fg:#111; --muted:#555;
+  --accent:#0ea5e9; --border:#0001;
+}
+html[data-theme="dark"] {
+  --bg:#0b0f16; --fg:#e8eef6; --muted:#9ab;
+  --accent:#7dd3fc; --border:#fff1;
+}
+
+/* Base layout */
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font-family:system-ui, sans-serif;
+}
+
+header {
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+  padding:.8rem 1rem;
+  border-bottom:1px solid var(--border);
+  box-shadow:var(--shadow);
+}
+header img { width:28px; height:auto; display:block; }
+
+nav {
+  margin-left:auto;
+  display:flex;
+  gap:.6rem;
+}
+nav a {
+  text-decoration:none;
+  color:var(--fg);
+  padding:.35rem .6rem;
+  border:1px solid var(--border);
+  border-radius:.5rem;
+}
+nav a:hover { border-color:var(--accent); }
+nav a[aria-current="page"] { border-color: var(--accent); }
+
+button#theme-toggle {
+  border:1px solid var(--border);
+  background:transparent;
+  color:var(--fg);
+  border-radius:.5rem;
+  padding:.35rem .6rem;
+  cursor:pointer;
+}
+
+/* 3D viewer */
+model-viewer {
+  width:100%;
+  height:80vh;
+  background:var(--bg);
+}
+
+/* CV page */
+.pdf-container {
+  padding:0;
+}
+.pdf-frame {
+  width:100%;
+  height: calc(100vh - 64px); /* header ~64px */
+  border:0;
+  display:block;
+  background:var(--bg);
+}
+.pdf-fallback {
+  padding:1rem;
+  margin:0;
+  color: var(--muted);
 }

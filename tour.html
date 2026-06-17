@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>INCYTE Walkthrough (prototype) — Paul Lobpreis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="media/index/favicon-32.png" sizes="32x32" type="image/png">
+  <style>
+    :root { --accent:#0284c7; }
+    html,body { margin:0; height:100%; background:#eef2f7; color:#111;
+                font-family:system-ui, sans-serif; overflow:hidden; }
+    #app { position:fixed; inset:0; }
+    canvas { display:block; }
+
+    /* Crosshair */
+    #cross { position:fixed; left:50%; top:50%; width:6px; height:6px;
+             margin:-3px 0 0 -3px; border-radius:50%;
+             background:var(--accent); opacity:.8; pointer-events:none; }
+
+    /* Start / pause overlay */
+    #overlay { position:fixed; inset:0; display:flex; flex-direction:column;
+               align-items:center; justify-content:center; gap:.8rem;
+               background:rgba(238,242,247,.9); backdrop-filter:blur(3px);
+               text-align:center; cursor:pointer; z-index:10; padding:1rem; }
+    #overlay h1 { margin:0; font-size:1.4rem; letter-spacing:.02em; }
+    #overlay p  { margin:0; color:#555; max-width:34rem; line-height:1.5; }
+    .keys { display:flex; gap:.4rem; margin-top:.4rem; flex-wrap:wrap; justify-content:center; }
+    .keys kbd { border:1px solid #0002; border-radius:.35rem; padding:.15rem .5rem;
+                font-family:ui-monospace, monospace; font-size:.85rem; background:#0001; }
+    .start { margin-top:.6rem; border:1px solid var(--accent); color:var(--accent);
+             border-radius:.5rem; padding:.5rem 1rem; font-size:1rem; }
+
+    /* HUD + nav */
+    #hud { position:fixed; left:12px; bottom:10px; font-size:.78rem; color:#555;
+           pointer-events:none; line-height:1.4; }
+    #hud b { color:#111; }
+    nav#topnav { position:fixed; left:12px; top:10px; z-index:11; display:flex; gap:.4rem; }
+    nav#topnav a { color:#334; text-decoration:none; font-size:.85rem; border:1px solid #0002;
+                   padding:.3rem .6rem; border-radius:.5rem; background:rgba(255,255,255,.75); }
+    nav#topnav a:hover { border-color:var(--accent); color:var(--accent); }
+    .tag { position:fixed; right:12px; top:10px; font-size:.72rem; color:#555;
+           border:1px solid #0002; padding:.3rem .6rem; border-radius:.5rem;
+           background:rgba(255,255,255,.65); }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <div id="cross" hidden></div>
+  <nav id="topnav">
+    <a href="index.html">← Home</a>
+    <a href="cv.html">CV</a>
+  </nav>
+  <div class="tag">PROTOTYPE · placeholder layout</div>
+  <div id="hud" hidden>
+    <div><b>WASD</b> move · <b>mouse</b> look · <b>Shift</b> run · <b>Esc</b> release</div>
+    <div id="room">—</div>
+  </div>
+
+  <div id="overlay">
+    <h1>INCYTE — Ebene 0 walkthrough</h1>
+    <p>A first-person proof-of-concept of the ground-floor microscopy suite. The layout
+       is a rough placeholder (not to scale) — its only job is to test how a real
+       walk-through of the building would feel before any Blender modelling begins.</p>
+    <div class="keys">
+      <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> move
+      <kbd>Mouse</kbd> look <kbd>Shift</kbd> run <kbd>Esc</kbd> release
+    </div>
+    <div class="start">Click to enter ▶</div>
+  </div>
+
+  <script type="importmap">
+  { "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  } }
+  </script>
+
+  <script type="module">
+  import * as THREE from 'three';
+  import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
+
+  const BG = 0xeef2f7;
+  const WALL_H = 3.2, T = 0.2, EYE = 1.6, R = 0.32;
+
+  // ---------- scene ----------
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(BG);
+  scene.fog = new THREE.Fog(BG, 20, 60);
+
+  const camera = new THREE.PerspectiveCamera(72, innerWidth/innerHeight, 0.1, 200);
+  camera.position.set(3, EYE, 14);
+
+  const renderer = new THREE.WebGLRenderer({ antialias:true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.setSize(innerWidth, innerHeight);
+  document.getElementById('app').appendChild(renderer.domElement);
+
+  scene.add(new THREE.HemisphereLight(0xffffff, 0xcdd6e0, 1.15));
+  const dir = new THREE.DirectionalLight(0xffffff, 0.55);
+  dir.position.set(20, 40, 10); scene.add(dir);
+
+  // ---------- floor + ceiling ----------
+  const W = 60, D = 28;
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(W, D),
+      new THREE.MeshStandardMaterial({ color:0xdde3ea, roughness:1 }));
+  floor.rotation.x = -Math.PI/2; floor.position.set(W/2, 0, D/2); scene.add(floor);
+  const grid = new THREE.GridHelper(Math.max(W,D), Math.max(W,D), 0xb9c3cf, 0xcfd7df);
+  grid.position.set(W/2, 0.01, D/2); scene.add(grid);
+  const ceil = new THREE.Mesh(new THREE.PlaneGeometry(W, D),
+      new THREE.MeshStandardMaterial({ color:0xf2f5f8, roughness:1 }));
+  ceil.rotation.x = Math.PI/2; ceil.position.set(W/2, WALL_H, D/2); scene.add(ceil);
+
+  // ---------- walls ----------
+  const walls = []; // AABBs {minX,maxX,minZ,maxZ}
+  const wallMat = new THREE.MeshStandardMaterial({ color:0xc2ccd7, roughness:.9 });
+  function addWall(x1, z1, x2, z2) {
+    const dx = Math.abs(x2-x1), dz = Math.abs(z2-z1);
+    const w = dx + T, d = dz + T;
+    const cx = (x1+x2)/2, cz = (z1+z2)/2;
+    const m = new THREE.Mesh(new THREE.BoxGeometry(w, WALL_H, d), wallMat);
+    m.position.set(cx, WALL_H/2, cz); scene.add(m);
+    walls.push({ minX:cx-w/2, maxX:cx+w/2, minZ:cz-d/2, maxZ:cz+d/2 });
+  }
+  // horizontal wall run with a centered doorway per bay
+  function wallWithDoors(z, xStart, xEnd, bay, doorW) {
+    for (let x = xStart; x < xEnd - 0.01; x += bay) {
+      const c = x + bay/2;
+      addWall(x, z, c - doorW/2, z);
+      addWall(c + doorW/2, z, x + bay, z);
+    }
+  }
+
+  // Perimeter (west wall has an entrance gap at the corridor: z 12.5–15.5)
+  addWall(0, 0, W, 0);            // south
+  addWall(0, D, W, D);           // north
+  addWall(W, 0, W, D);           // east
+  addWall(0, 0, 0, 12.5);        // west (lower)
+  addWall(0, 15.5, 0, D);        // west (upper)
+
+  // Corridor walls (north z=15.5, south z=12.5) with doorways into each room
+  wallWithDoors(15.5, 0, 60, 6, 1.6);   // 10 instrument rooms (north)
+  wallWithDoors(12.5, 0, 60, 12, 1.6);  // 5 large rooms (south)
+
+  // Cross partitions — north (every 6 m), south (every 12 m)
+  for (let x = 6; x <= 54; x += 6) addWall(x, 15.5, x, D);
+  for (let x = 12; x <= 48; x += 12) addWall(x, 0, x, 12.5);
+
+  // ---------- room labels ----------
+  function label(text, x, z, color = '#0369a1') {
+    const cnv = document.createElement('canvas'); cnv.width = 512; cnv.height = 128;
+    const g = cnv.getContext('2d');
+    g.fillStyle = 'rgba(255,255,255,0.78)'; g.fillRect(0,0,512,128);
+    g.strokeStyle = 'rgba(2,132,199,0.35)'; g.lineWidth = 4; g.strokeRect(2,2,508,124);
+    g.font = 'bold 52px system-ui, sans-serif'; g.textAlign = 'center';
+    g.textBaseline = 'middle'; g.fillStyle = color;
+    g.fillText(text, 256, 64);
+    const tex = new THREE.CanvasTexture(cnv);
+    const spr = new THREE.Sprite(new THREE.SpriteMaterial({ map:tex, transparent:true, depthTest:false }));
+    spr.scale.set(4, 1, 1); spr.position.set(x, 2.5, z); scene.add(spr);
+  }
+  const north = ['TEM','HRTEM','FIB 1','FIB 2','UHRSEM','ESEM','SEM','STM 1','STM 2','STM 3'];
+  north.forEach((n,i) => label(n, i*6+3, 21));
+  label('Reinraum (Cleanroom)', 12, 6, '#15803d');
+  label('XPS / Röntgen', 30, 6);
+  label('Lichtmikroskopie', 42, 6);
+  label('Präparation', 54, 6);
+  label('◄ Eingang', 1.5, 14, '#b45309');
+
+  // ---------- controls ----------
+  const controls = new PointerLockControls(camera, renderer.domElement);
+  // (camera renders without being added to the scene graph; PointerLockControls drives it directly)
+  const overlay = document.getElementById('overlay');
+  const hud = document.getElementById('hud');
+  const cross = document.getElementById('cross');
+  const roomEl = document.getElementById('room');
+  overlay.addEventListener('click', () => controls.lock());
+  controls.addEventListener('lock',   () => { overlay.hidden = true;  hud.hidden = false; cross.hidden = false; });
+  controls.addEventListener('unlock', () => { overlay.hidden = false; hud.hidden = true;  cross.hidden = true;  });
+
+  const keys = {};
+  addEventListener('keydown', e => keys[e.code] = true);
+  addEventListener('keyup',   e => keys[e.code] = false);
+
+  function collides(x, z) {
+    for (const b of walls)
+      if (x > b.minX - R && x < b.maxX + R && z > b.minZ - R && z < b.maxZ + R) return true;
+    return false;
+  }
+
+  // which room am I in? (simple z/x partition lookup)
+  function whichRoom(x, z) {
+    if (x < 0 || x > W || z < 0 || z > D) return '—';
+    if (z >= 12.5 && z <= 15.5) return 'Flur (corridor)';
+    if (z > 15.5) return north[Math.min(north.length-1, Math.floor(x/6))] || 'Lab';
+    const s = ['Reinraum','Reinraum','XPS / Röntgen','Lichtmikroskopie','Präparation'];
+    return s[Math.min(4, Math.floor(x/12))];
+  }
+
+  const fwd = new THREE.Vector3(), right = new THREE.Vector3(), up = new THREE.Vector3(0,1,0);
+  const clock = new THREE.Clock();
+
+  function animate() {
+    requestAnimationFrame(animate);
+    const dt = Math.min(clock.getDelta(), 0.05);
+    if (controls.isLocked) {
+      const speed = (keys['ShiftLeft'] || keys['ShiftRight'] ? 9 : 4.5) * dt;
+      camera.getWorldDirection(fwd); fwd.y = 0; fwd.normalize();
+      right.crossVectors(fwd, up).normalize();
+      let mx = 0, mz = 0;
+      if (keys['KeyW']) { mx += fwd.x; mz += fwd.z; }
+      if (keys['KeyS']) { mx -= fwd.x; mz -= fwd.z; }
+      if (keys['KeyD']) { mx += right.x; mz += right.z; }
+      if (keys['KeyA']) { mx -= right.x; mz -= right.z; }
+      const len = Math.hypot(mx, mz) || 1;
+      mx = mx/len*speed; mz = mz/len*speed;
+      const p = camera.position;
+      if (!collides(p.x + mx, p.z)) p.x += mx;   // per-axis → wall sliding
+      if (!collides(p.x, p.z + mz)) p.z += mz;
+      p.y = EYE;
+      roomEl.textContent = '📍 ' + whichRoom(p.x, p.z);
+    }
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  addEventListener('resize', () => {
+    camera.aspect = innerWidth/innerHeight; camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth, innerHeight);
+  });
+  </script>
+</body>
+</html>

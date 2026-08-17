@@ -107,20 +107,60 @@ assert n, 'no blue region found — has the artwork changed?'
 sizes = ndimage.sum(blue, labels, range(1, n + 1))
 field = labels == (int(np.argmax(sizes)) + 1)
 
-# Cropping a rectangle is not enough: the helm sits directly above the shield and
-# bleeds into the top of the box. So mask to the shield's own silhouette — fill the
-# blue field's holes to recover the lion and the star, then grow it just past the
-# black outline that rings the shield.
-solid = ndimage.binary_fill_holes(field)
-solid = ndimage.binary_dilation(solid, structure=disk(11))
+# The shield's own black outline cannot be harvested from the artwork: the helm and
+# the mantling touch the shield along its top edge, so any dilation wide enough to
+# pick up the outline also picks up pieces of them, which is what left dark stubs
+# in the top corners of the icon.
+#
+# So keep only what is unambiguously the shield — the blue field with its holes
+# filled, which restores the lion and the star — and draw the border instead of
+# copying it. A ring just outside the silhouette, painted the same near-black the
+# artwork uses.
+inner = ndimage.binary_fill_holes(field)
 
-masked = np.asarray(crest).copy()
-masked[..., 3] = (masked[..., 3] * solid).astype(np.uint8)
-shield_full = Image.fromarray(masked, mode='RGBA')
+# The helm rests on the shield and hides part of its top edge, so the blue field
+# genuinely stops short there and the silhouette comes out with a notch in the
+# middle of the top. Close it by filling each column up to the shield's highest
+# row — but only where the gap is small, so a corner that is really rounded stays
+# rounded instead of being squared off.
+art = np.asarray(crest)
+shield_arr = np.zeros_like(art)
+shield_arr[inner] = art[inner]
 
-box = shield_full.getbbox()
-shield = shield_full.crop(box)
-print(f'shield masked and cropped to {shield.size}')
+# This shield has a straight top edge, so every column can be filled up to the
+# highest row the field reaches. A per-column threshold was tried first and left a
+# notch wherever the helm covered more than the threshold allowed.
+#
+# The reconstructed strip cannot copy the artwork — the helm is exactly what was
+# covering it. Extending each column's topmost surviving pixel upwards instead of
+# painting a single flat blue keeps the field's shading continuous; a flat median
+# left a visible seam at 512 px.
+ys, xs = np.where(inner)
+top, left, right = ys.min(), xs.min(), xs.max()
+
+# One flat blue, taken from the field's own pixels in the upper fifth of the shield
+# so it matches the local tone. Extending each column's nearest surviving pixel was
+# tried instead and picked up whatever happened to sit at the boundary — antialiased
+# edges became bright streaks, the lion's outline became a black bar.
+band = field.copy()
+band[top + round(0.2 * (ys.max() - top)):, :] = False
+FIELD = np.median(art[band][:, :3], axis=0).astype(np.uint8)
+
+for c in range(left, right + 1):
+    column = inner[:, c]
+    if not column.any():
+        continue
+    first = int(np.argmax(column))
+    if first > top:
+        shield_arr[top:first, c] = (*FIELD, 255)
+        inner[top:first, c] = True
+
+ring = ndimage.binary_dilation(inner, structure=disk(10)) & ~inner
+shield_arr[ring] = (16, 18, 20, 255)
+
+shield_full = Image.fromarray(shield_arr, mode='RGBA')
+shield = shield_full.crop(shield_full.getbbox())
+print(f'shield rebuilt, outline redrawn, {shield.size}')
 
 # Square canvas, slightly larger than the shield so it does not touch the edges.
 side = round(max(shield.size) * 1.08)

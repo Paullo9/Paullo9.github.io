@@ -1,4 +1,14 @@
-_build
+# macOS
 .DS_Store
 
+# Local tooling and notes, not part of the site
+.claude/
+CLAUDE.md
 
+# Build output
+_build
+
+# Generator sources that are never served. tools/make_crest.py needs this file
+# present locally; the artwork it produces (media/paul/crest-256.png and the
+# favicons) is committed, so a clone builds the site fine without it.
+media/paul/Wappen_GPT.png

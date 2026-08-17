@@ -1,0 +1,22 @@
+{
+  "scan": {
+    "x": 66,
+    "y": 66
+  },
+  "detector": {
+    "x": 32,
+    "y": 32
+  },
+  "calibration": {
+    "q_pixel_size": 0.15682791471481322,
+    "q_pixel_units": "A^-1",
+    "r_pixel_size": 9.0,
+    "r_pixel_units": "nm"
+  },
+  "compand": {
+    "knee": 1171777.4336,
+    "vmax": 5858887168.0,
+    "denom": 8.517393171418904
+  },
+  "sample": "Ni65Cu35 alloy"
+}

@@ -1,56 +1,325 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Paul Lobpreis</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Theme color for mobile UIs (updated by theme.js) -->
-  <meta id="theme-color" name="theme-color" content="#ffffff">
+<title>Paul Lobpreis</title>
+<meta name="description" content="Paul Lobpreis — materials scientist in Siegen. Links, a scan of the lab, and a 4D-STEM dataset you can pull apart in the browser.">
+<link rel="canonical" href="https://paullobpreis.com/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#E4E6E4">
 
-  <!-- Favicons (light/dark aware for theme.js) -->
-  <link rel="icon" href="media/index/favicon-32.png" sizes="32x32" type="image/png">
-  <link rel="icon" href="media/index/favicon-16.png" sizes="16x16" type="image/png">
-  <link rel="apple-touch-icon" href="media/index/apple-touch-icon.png" sizes="180x180">
-  <link rel="icon" href="media/index/favicon-512.png" sizes="512x512" type="image/png">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Paul Lobpreis">
+<meta property="og:url" content="https://paullobpreis.com/">
+<meta property="og:title" content="Paul Lobpreis">
+<meta property="og:description" content="Materials scientist in Siegen. A scan of the lab, and a 4D-STEM dataset you can pull apart in the browser.">
+<meta property="og:image" content="https://paullobpreis.com/media/index/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Paul Lobpreis">
+<meta name="twitter:card" content="summary_large_image">
 
-  <link rel="stylesheet" href="style.css">
+<link rel="icon" href="media/index/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="media/index/favicon-16.png" sizes="16x16" type="image/png">
+<link rel="icon" href="media/index/favicon-512.png" sizes="512x512" type="image/png">
+<link rel="apple-touch-icon" href="media/index/apple-touch-icon.png">
 
-  <!-- <model-viewer> library -->
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-  <!-- Theme switcher -->
-  <script src="theme.js" defer></script>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
 </head>
 
 <body>
-  <header>
-    <img src="media/index/logo.png" alt="Logo">
-    <strong>Paul Lobpreis</strong>
-    <nav>
-      <a href="index.html">Home</a>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html">
+      <img src="media/paul/crest-256.png" alt="" height="30">
+      <span>Paul Lobpreis</span>
+    </a>
+    <!-- Pages only, never in-page anchors. Mixing the two made the bar read as one
+         flat list of things that behave differently, and it gets worse with every
+         page added. New topics slot in here as peers; sections inside a page are
+         just scrolled to. -->
+    <nav class="site-nav" aria-label="Pages">
+      <a href="index.html" aria-current="page">Home</a>
       <a href="cv.html">CV</a>
-      <a href="tour.html">Walkthrough</a>
     </nav>
-    <button id="theme-toggle" aria-label="Toggle theme">Theme: auto</button>
-  </header>
+    <div class="header-tools">
+      <div class="palette" id="palette" role="group" aria-label="Accent colour">
+        <button type="button" data-palette="magma" aria-label="Magma"></button>
+        <button type="button" data-palette="viridis" aria-label="Viridis"></button>
+        <button type="button" data-palette="mono" aria-label="Monochrome"></button>
+      </div>
+      <button type="button" id="theme-toggle" class="theme-toggle">auto</button>
+    </div>
+  </div>
+</header>
 
-  <main>
-    <model-viewer
-      src="media/TEM/TEM_polycam.glb"
-      alt="3D scan of our TEM lab"
-      camera-controls
-      auto-rotate
-      interaction-prompt="when-focused"
-      exposure="1"
-      shadow-intensity="0.8"
-      environment-image="neutral"
-      touch-action="pan-y">
-    </model-viewer>
+<main id="main">
 
-    <noscript>
-      <p style="padding:1rem">This page shows an interactive 3D model using Web Components.
-      Please enable JavaScript to view it.</p>
-    </noscript>
-  </main>
+  <div class="wrap">
+    <section class="hero hero-quiet">
+      <!-- The name is already in the header, so it is not repeated visibly. It stays
+           in the document as the page's h1 for screen readers and search engines. -->
+      <h1 class="sr-only">Paul Lobpreis</h1>
+      <p>Welcome. Still under construction — more pages to come.</p>
+    </section>
+  </div>
+
+  <!-- ---------- links ---------- -->
+
+  <div class="wrap">
+    <section class="band band-rule" id="links" aria-labelledby="links-h">
+      <h2 class="section-label" id="links-h">Elsewhere</h2>
+
+      <ul class="link-grid">
+        <li>
+          <a href="https://www.linkedin.com/in/paullobpreis/" rel="noopener">
+            <span class="k">Professional</span>
+            <span class="t">LinkedIn</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://orcid.org/0009-0007-4889-1542" rel="noopener">
+            <span class="k">Publications</span>
+            <span class="t">ORCID</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/Paullo9" rel="noopener">
+            <span class="k">Code</span>
+            <span class="t">GitHub</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/paullobpreis/" rel="noopener">
+            <span class="k">Instagram</span>
+            <span class="t">@paullobpreis</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/lmn_unisiegen/" rel="noopener">
+            <span class="k">Instagram</span>
+            <span class="t">@lmn_unisiegen</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://lmn.mb.uni-siegen.de/" rel="noopener">
+            <span class="k">Research group</span>
+            <span class="t">Micro- and Nanoanalytics</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://mac4dstem.com" rel="noopener">
+            <span class="k">Project</span>
+            <span class="t">mac4DSTEM</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- ---------- 4D-STEM ---------- -->
+
+  <div class="wrap">
+    <section class="band band-rule" id="data" aria-labelledby="data-h">
+      <h2 class="section-label" id="data-h">4D-STEM</h2>
+
+      <p class="demo-intro">
+        A real scan of a nickel–copper alloy, with a full diffraction pattern recorded at
+        every point. Each side makes the other: move the detector, or pick a region in the
+        image. It all runs in your browser.
+      </p>
+
+      <div id="demo">
+        <p class="demo-load-row">
+          <button type="button" id="demo-load" class="btn btn-solid">Load the dataset · 2.5 MB</button>
+          <span id="demo-status" class="demo-status">Loading…</span>
+        </p>
+
+        <div id="demo-stage" class="demo-stage" hidden>
+          <figure class="demo-panel">
+            <figcaption>
+              <span>Diffraction — detector</span>
+              <span id="demo-diff-read" class="demo-read"></span>
+            </figcaption>
+            <canvas id="demo-diff" aria-label="Diffraction pattern summed over the selected scan region. Drag to move the detector; scroll to resize it."></canvas>
+            <p class="demo-hint">Drag to move · scroll for outer radius · shift-scroll for inner</p>
+          </figure>
+
+          <figure class="demo-panel">
+            <figcaption>
+              <span>Real space — virtual image</span>
+              <span id="demo-real-read" class="demo-read"></span>
+            </figcaption>
+            <canvas id="demo-real" aria-label="Virtual image of the scan, formed by the detector mask. Drag to place a region; scroll to resize it."></canvas>
+            <p class="demo-hint">Drag to select a region · scroll to resize</p>
+          </figure>
+
+          <div class="demo-controls">
+            <div class="control-group">
+              <span>Detector</span>
+              <div class="btn-row" id="demo-presets">
+                <button type="button" class="btn" data-preset="bf" aria-pressed="true">Bright field</button>
+                <button type="button" class="btn" data-preset="adf" aria-pressed="false">Annular dark field</button>
+                <button type="button" class="btn" data-preset="haadf" aria-pressed="false">HAADF</button>
+                <button type="button" class="btn" data-preset="all">Reset region</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <span>Colour</span>
+              <div class="btn-row" id="demo-maps">
+                <button type="button" class="btn" data-map="grey" aria-pressed="false">Grey</button>
+                <button type="button" class="btn" data-map="viridis" aria-pressed="false">Viridis</button>
+                <button type="button" class="btn" data-map="magma" aria-pressed="true">Magma</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ---------- projects ---------- -->
+
+  <div class="wrap">
+    <section class="band band-rule" id="projects" aria-labelledby="projects-h">
+      <h2 class="section-label" id="projects-h">Projects</h2>
+
+      <div class="card">
+        <h3>mac4DSTEM</h3>
+        <p>
+          A free, native macOS app for 4D-STEM analysis — the kind of thing the demo above
+          does, but on real datasets and on the GPU in a laptop. Open source, GPL-3.0.
+        </p>
+        <ul class="btn-row">
+          <li><a class="btn btn-solid" href="https://mac4dstem.com" rel="noopener">mac4dstem.com</a></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <!-- ---------- the lab ---------- -->
+
+  <div class="wrap">
+    <section class="band band-rule" id="lab" aria-labelledby="lab-h">
+      <h2 class="section-label" id="lab-h">The lab</h2>
+
+      <div class="scan-layout">
+        <div>
+          <div class="scan-frame">
+            <model-viewer
+              id="scan"
+              src="media/TEM/TEM_room.glb"
+              alt="A 3D scan of the electron microscopy lab at the University of Siegen."
+              camera-controls
+              interaction-prompt="none"
+              loading="lazy"
+              exposure="1.05"
+              shadow-intensity="0"
+              environment-image="neutral"
+              camera-target="-0.55m 0.25m 0.1m"
+              camera-orbit="14deg 79deg 6.4m"
+              field-of-view="42deg"
+              min-camera-orbit="-115deg 25deg 2m"
+              max-camera-orbit="70deg 92deg 9m"
+              touch-action="pan-y">
+
+              <button class="hotspot" slot="hotspot-column" data-hotspot="column"
+                      data-position="0.289m 0.470m 0.411m" data-normal="0.039m 0.013m 0.999m"
+                      aria-label="The microscope"></button>
+
+              <button class="hotspot" slot="hotspot-camera" data-hotspot="camera"
+                      data-position="0.036m -0.929m 0.437m" data-normal="0.036m 0.012m 0.999m"
+                      aria-label="The camera"></button>
+
+              <button class="hotspot" slot="hotspot-tank" data-hotspot="tank"
+                      data-position="-1.376m -0.232m -1.551m" data-normal="-0.997m -0.033m 0.064m"
+                      aria-label="The high tension tank"></button>
+
+              <button class="hotspot" slot="hotspot-cabinet" data-hotspot="cabinet"
+                      data-position="-1.661m -0.300m -0.179m" data-normal="0.004m -0.085m 0.996m"
+                      aria-label="The holder cabinet"></button>
+
+              <button class="hotspot" slot="hotspot-plasma" data-hotspot="plasma"
+                      data-position="1.454m -0.394m 0.575m" data-normal="-0.999m 0.006m -0.043m"
+                      aria-label="The plasma cleaner"></button>
+
+              <button class="hotspot" slot="hotspot-desk" data-hotspot="desk"
+                      data-position="1.557m -0.617m 1.539m" data-normal="0m 0.999m -0.035m"
+                      aria-label="The loading bench"></button>
+            </model-viewer>
+
+            <div class="scan-tools" id="scan-views" role="group" aria-label="Camera positions">
+              <button type="button" class="btn" data-view="room" aria-pressed="true">Room</button>
+              <button type="button" class="btn" data-view="column" aria-pressed="false">Microscope</button>
+              <button type="button" class="btn" data-view="camera" aria-pressed="false">Camera</button>
+              <button type="button" class="btn" data-view="tank" aria-pressed="false">Tank</button>
+            </div>
+          </div>
+          <p class="scan-hint">Drag to orbit · scroll to zoom · tap a marker</p>
+        </div>
+
+        <aside class="scan-info" id="scan-info" aria-live="polite">
+          <p class="eyebrow" id="scan-eyebrow">The lab</p>
+          <h3 id="scan-title">Where I work</h3>
+          <div id="scan-body">
+            <p>The lab I work in at the University of Siegen, scanned with the LiDAR sensor
+               on my phone. Tap a marker.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-id">
+      <img class="crest" src="media/paul/crest-256.png" alt="Family coat of arms"
+           width="44" height="66" loading="lazy" decoding="async">
+      <p><a href="mailto:mail@paullobpreis.com">mail@paullobpreis.com</a></p>
+    </div>
+    <p class="colophon">No analytics · no cookies · no third-party requests</p>
+  </div>
+</footer>
+
+<script type="module" src="vendor/model-viewer.min.js"></script>
+<script src="scan.js" defer></script>
+<script src="demo.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Paul Lobpreis",
+  "givenName": "Paul",
+  "familyName": "Lobpreis",
+  "url": "https://paullobpreis.com/",
+  "email": "mailto:mail@paullobpreis.com",
+  "jobTitle": "Research Associate",
+  "affiliation": {
+    "@type": "Organization",
+    "name": "University of Siegen",
+    "url": "https://www.uni-siegen.de/"
+  },
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "ORCID",
+    "value": "0009-0007-4889-1542"
+  },
+  "sameAs": [
+    "https://orcid.org/0009-0007-4889-1542",
+    "https://www.linkedin.com/in/paullobpreis/",
+    "https://github.com/Paullo9",
+    "https://mac4dstem.com"
+  ]
+}
+</script>
 </body>
 </html>

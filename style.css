@@ -1,90 +1,936 @@
-/* Base theme (light) */
+/* paullobpreis.com — no build step, no dependencies, no web fonts.
+ *
+ * Structurally a sibling of mac4dstem.com: same neutral greys, same mono/uppercase
+ * label idiom, same hairline rules. The accent is not fixed here though — see the
+ * palette block below.
+ *
+ * Web fonts are avoided on purpose: embedding Google Fonts is a GDPR problem in
+ * Germany. System stack only.
+ */
+
+/* ---------------------------------------------------------------- palette --
+ *
+ * Two axes, set independently on <html> by theme.js:
+ *
+ *   data-theme    light | dark | absent (follow the OS)
+ *   data-palette  magma | viridis | mono
+ *
+ * The theme moves the greys. The palette moves only the accent — the page stays
+ * the same quiet grey either way, exactly as much colour as the teal used to be.
+ * The accents are read off the matplotlib colour maps the demo already uses, so
+ * picking "magma" on the page and "magma" in the demo means the same thing.
+ *
+ * Light needs the dark end of each map and dark needs the light end, so every
+ * combination is spelled out: three palettes x three theme states. Tedious, but
+ * a var() indirection here would break the `prefers-color-scheme` fallback.
+ */
+
 :root {
-  --bg:#ffffff; --fg:#111; --muted:#555;
-  --accent:#0ea5e9; --border:#0001;
-  --shadow:0 1px 2px rgba(0,0,0,.06);
+  color-scheme: light dark;
+
+  --ash:    #E4E6E4;
+  --panel:  #F2F3F1;
+  --ink:    #15171A;
+  --muted:  #62676C;
+  --hair:   #C9CCC9;
+
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+  --measure: 68rem;
+  --header-h: 3.5rem;
 }
 
-/* Dark mode via OS preference */
+/* -- accents, light ground -- */
+:root,
+:root[data-palette="magma"]   { --accent: #A8431B; --accent-ink: #FFFFFF; }
+:root[data-palette="viridis"] { --accent: #1A6F62; --accent-ink: #FFFFFF; }
+:root[data-palette="mono"]    { --accent: #15171A; --accent-ink: #E4E6E4; }
+
+/* -- greys and accents, dark ground -- */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg:#0b0f16; --fg:#e8eef6; --muted:#9ab;
-    --accent:#7dd3fc; --border:#fff1;
+  :root:not([data-theme="light"]) {
+    --ash:    #121316;
+    --panel:  #1A1C20;
+    --ink:    #E7E9E7;
+    --muted:  #9AA0A6;
+    --hair:   #2C3034;
+  }
+  :root:not([data-theme="light"]),
+  :root:not([data-theme="light"])[data-palette="magma"]   { --accent: #FB9062; --accent-ink: #101214; }
+  :root:not([data-theme="light"])[data-palette="viridis"] { --accent: #35B779; --accent-ink: #101214; }
+  :root:not([data-theme="light"])[data-palette="mono"]    { --accent: #E7E9E7; --accent-ink: #121316; }
+}
+
+/* The toggle has to win in both directions, so both states are spelled out
+   rather than relying on the media query alone. */
+:root[data-theme="light"] {
+  --ash:    #E4E6E4;
+  --panel:  #F2F3F1;
+  --ink:    #15171A;
+  --muted:  #62676C;
+  --hair:   #C9CCC9;
+}
+
+:root[data-theme="light"],
+:root[data-theme="light"][data-palette="magma"]   { --accent: #A8431B; --accent-ink: #FFFFFF; }
+:root[data-theme="light"][data-palette="viridis"] { --accent: #1A6F62; --accent-ink: #FFFFFF; }
+:root[data-theme="light"][data-palette="mono"]    { --accent: #15171A; --accent-ink: #E4E6E4; }
+
+:root[data-theme="dark"] {
+  --ash:    #121316;
+  --panel:  #1A1C20;
+  --ink:    #E7E9E7;
+  --muted:  #9AA0A6;
+  --hair:   #2C3034;
+}
+
+:root[data-theme="dark"],
+:root[data-theme="dark"][data-palette="magma"]   { --accent: #FB9062; --accent-ink: #101214; }
+:root[data-theme="dark"][data-palette="viridis"] { --accent: #35B779; --accent-ink: #101214; }
+:root[data-theme="dark"][data-palette="mono"]    { --accent: #E7E9E7; --accent-ink: #121316; }
+
+* { box-sizing: border-box; }
+
+/* `hidden` must win over the display values set further down — several of the
+   elements toggled by script are flex or grid containers, which would otherwise
+   ignore the attribute entirely. */
+[hidden] { display: none !important; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 1rem);
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
-/* Manual override */
-html[data-theme="light"] {
-  --bg:#ffffff; --fg:#111; --muted:#555;
-  --accent:#0ea5e9; --border:#0001;
-}
-html[data-theme="dark"] {
-  --bg:#0b0f16; --fg:#e8eef6; --muted:#9ab;
-  --accent:#7dd3fc; --border:#fff1;
-}
-
-/* Base layout */
 body {
-  margin:0;
-  background:var(--bg);
-  color:var(--fg);
-  font-family:system-ui, sans-serif;
+  margin: 0;
+  background: var(--ash);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-header {
-  display:flex;
-  align-items:center;
-  gap:.75rem;
-  padding:.8rem 1rem;
-  border-bottom:1px solid var(--border);
-  box-shadow:var(--shadow);
-}
-header img { width:28px; height:auto; display:block; }
+::selection { background: var(--accent); color: var(--accent-ink); }
 
-nav {
-  margin-left:auto;
-  display:flex;
-  gap:.6rem;
-}
-nav a {
-  text-decoration:none;
-  color:var(--fg);
-  padding:.35rem .6rem;
-  border:1px solid var(--border);
-  border-radius:.5rem;
-}
-nav a:hover { border-color:var(--accent); }
-nav a[aria-current="page"] { border-color: var(--accent); }
-
-button#theme-toggle {
-  border:1px solid var(--border);
-  background:transparent;
-  color:var(--fg);
-  border-radius:.5rem;
-  padding:.35rem .6rem;
-  cursor:pointer;
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
-/* 3D viewer */
-model-viewer {
-  width:100%;
-  height:80vh;
-  background:var(--bg);
+a { color: inherit; }
+
+.wrap {
+  width: 100%;
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
 }
 
-/* CV page */
-.pdf-container {
-  padding:0;
+/* ---------- skip link ---------- */
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--ash);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  padding: 0.6rem 1rem;
+  z-index: 40;
 }
-.pdf-frame {
-  width:100%;
-  height: calc(100vh - 64px); /* header ~64px */
-  border:0;
-  display:block;
-  background:var(--bg);
+
+.skip:focus { left: 0.5rem; top: 0.5rem; }
+
+/* ---------- header ---------- */
+
+/* The old header put logo, wordmark, four nav links and a theme button in one
+   non-wrapping row; below ~420 px the button was pushed off-screen entirely.
+   Now the nav is its own scrollable row on narrow screens. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: color-mix(in srgb, var(--ash) 88%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--hair);
 }
-.pdf-fallback {
-  padding:1rem;
-  margin:0;
+
+@supports not (backdrop-filter: blur(10px)) {
+  .site-header { background: var(--ash); }
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: var(--header-h);
+  padding-block: 0.5rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  flex: none;
+}
+
+/* The arms, not a monogram. Sized by height because the artwork is 2:3. */
+.brand img {
+  height: 1.9rem;
+  width: auto;
+  display: block;
+}
+
+.brand span {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.site-nav {
+  margin-left: auto;
+  display: flex;
+  gap: 0.15rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.site-nav::-webkit-scrollbar { display: none; }
+
+.site-nav a {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
   color: var(--muted);
+  text-decoration: none;
+  padding: 0.4rem 0.55rem;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.site-nav a:hover { color: var(--ink); }
+.site-nav a[aria-current="page"],
+.site-nav a.is-current {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+.header-tools {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.theme-toggle {
+  flex: none;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--hair);
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.theme-toggle:hover { color: var(--ink); border-color: var(--accent); }
+
+/* Palette picker: three swatches, each showing the accent it would set. The
+   colours are hard-coded per swatch rather than inherited — a swatch has to show
+   its own colour, not the one currently active. */
+.palette {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.45rem;
+  border: 1px solid var(--hair);
+  border-radius: 999px;
+}
+
+.palette button {
+  width: 0.85rem;
+  height: 0.85rem;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  background: var(--swatch);
+  box-shadow: inset 0 0 0 1px rgba(128, 128, 128, 0.35);
+}
+
+.palette button[data-palette="magma"]   { --swatch: linear-gradient(135deg, #6B116E, #FB9062); }
+.palette button[data-palette="viridis"] { --swatch: linear-gradient(135deg, #3B518B, #5EC962); }
+.palette button[data-palette="mono"]    { --swatch: linear-gradient(135deg, #15171A, #C9CCC9); }
+
+.palette button[aria-pressed="true"] {
+  border-color: var(--ink);
+  transform: scale(1.15);
+}
+
+@media (max-width: 46rem) {
+  .header-inner {
+    flex-wrap: wrap;
+    row-gap: 0.35rem;
+  }
+  .site-nav {
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+  }
+  .header-tools { margin-left: auto; }
+}
+
+/* ---------- sections ---------- */
+
+.band { padding-block: clamp(2.5rem, 6vw, 4.5rem); }
+.band-rule { border-top: 1px solid var(--hair); }
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin: 0 0 1.5rem;
+}
+
+.section-label .num {
+  color: var(--accent);
+  margin-right: 0.7rem;
+}
+
+h2.lead, h3.lead {
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  margin: 0 0 0.9rem;
+  max-width: 30ch;
+}
+
+.prose {
+  color: var(--muted);
+  max-width: 62ch;
+  margin: 0 0 1.4rem;
+}
+
+.prose:last-child { margin-bottom: 0; }
+.prose a { color: var(--ink); text-decoration-color: var(--accent); text-underline-offset: 0.2em; }
+.prose a:hover { color: var(--accent); }
+
+/* ---------- hero ---------- */
+
+.hero { padding-block: clamp(2.5rem, 7vw, 4.5rem) clamp(2rem, 5vw, 3rem); }
+
+.hero h1 {
+  font-size: clamp(2.4rem, 8vw, 4.2rem);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  margin: 0 0 1.1rem;
+}
+
+/* Wide enough that the CV's subtitle sits on one line on a laptop and wraps by
+   itself on a phone. It used to be 26ch, which broke it after the comma. */
+.hero .tagline {
+  font-size: clamp(1.15rem, 2.6vw, 1.45rem);
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  margin: 0 0 1.3rem;
+  max-width: 60ch;
+}
+
+.hero .tagline em { font-style: normal; color: var(--accent); }
+
+.hero .lede {
+  color: var(--muted);
+  max-width: 58ch;
+  margin: 0 0 1.8rem;
+}
+
+.specs {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 1.8rem;
+  padding: 0;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.specs li {
+  border: 1px solid var(--hair);
+  padding: 0.32rem 0.6rem;
+}
+
+/* The landing page's version: one line of welcome, nothing else. A wordmark and an
+   introductory paragraph were both there and both cut — the name is in the header
+   already, and the description read as generated filler. The h1 survives as
+   screen-reader-only text. */
+.hero-quiet { padding-block: clamp(1.75rem, 4vw, 2.5rem) clamp(1.25rem, 3vw, 1.75rem); }
+
+.hero-quiet p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Visible to assistive technology, not on screen. Defined after the hero rules so
+   it wins over them without needing extra specificity. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- buttons ---------- */
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--hair);
+  border-radius: 999px;
+  padding: 0.55rem 1.05rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.btn:hover { color: var(--ink); border-color: var(--accent); }
+
+.btn-solid {
+  color: var(--accent-ink);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn-solid:hover {
+  color: var(--accent-ink);
+  background: color-mix(in srgb, var(--accent) 85%, var(--ink));
+  border-color: color-mix(in srgb, var(--accent) 85%, var(--ink));
+}
+
+.btn[aria-pressed="true"] {
+  color: var(--accent-ink);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn[disabled] { opacity: 0.5; cursor: default; }
+
+/* ---------- the lab scan ---------- */
+
+.scan-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+  align-items: start;
+}
+
+@media (max-width: 54rem) {
+  .scan-layout { grid-template-columns: minmax(0, 1fr); }
+}
+
+.scan-frame {
+  position: relative;
+  border: 1px solid var(--hair);
+  background: var(--panel);
+  overflow: hidden;
+}
+
+model-viewer {
+  display: block;
+  width: 100%;
+  height: clamp(20rem, 52vh, 32rem);
+  background: transparent;
+  --poster-color: transparent;
+}
+
+/* Hotspot markers. Small, high-contrast, and legible over a white-ish scan —
+   hence the ring plus the dark halo shadow. */
+.hotspot {
+  --dot: 0.95rem;
+  width: var(--dot);
+  height: var(--dot);
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: var(--accent);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.45), 0 1px 4px rgba(0, 0, 0, 0.4);
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.hotspot:hover,
+.hotspot[aria-pressed="true"] { transform: scale(1.35); }
+
+.hotspot[data-visible="false"] { opacity: 0; pointer-events: none; }
+
+.scan-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.6rem;
+  border-top: 1px solid var(--hair);
+  background: var(--ash);
+}
+
+.scan-tools .btn {
+  font-size: 0.68rem;
+  padding: 0.42rem 0.8rem;
+}
+
+.scan-hint {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--muted);
+  margin: 0.7rem 0 0;
+}
+
+/* Info panel beside the scan. */
+.scan-info {
+  border: 1px solid var(--hair);
+  background: var(--panel);
+  padding: clamp(1rem, 2.5vw, 1.4rem);
+  min-height: 12rem;
+}
+
+.scan-info .eyebrow {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin: 0 0 0.5rem;
+}
+
+.scan-info h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin: 0 0 0.6rem;
+}
+
+.scan-info p {
+  color: var(--muted);
+  font-size: 0.94rem;
+  margin: 0 0 0.9rem;
+}
+
+.scan-info p:last-child { margin-bottom: 0; }
+
+
+/* ---------- the 4D-STEM demo ---------- */
+
+.demo-intro { color: var(--muted); max-width: 62ch; margin: 0 0 1.5rem; }
+
+.demo-load-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0 0 1.25rem;
+}
+
+.demo-status {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--muted);
+}
+
+.demo-stage {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.8rem, 2vw, 1.5rem);
+  align-items: start;
+}
+
+@media (max-width: 46rem) {
+  .demo-stage { grid-template-columns: minmax(0, 1fr); }
+}
+
+.demo-panel {
+  margin: 0;
+  border: 1px solid var(--hair);
+  background: var(--panel);
+  padding: 0.7rem;
+}
+
+/* Label and readout always stack, never share a line. Side by side they wrap at
+   different widths in the two panels, and the canvases stop lining up. */
+.demo-panel figcaption {
+  display: grid;
+  gap: 0.15rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.55rem;
+}
+
+/* Not uppercased, unlike the label beside it: these readouts carry units, and
+   uppercasing turns "µm" into something that reads as "MM". */
+.demo-read {
+  color: var(--accent);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.demo-panel canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--ash);
+  border: 1px solid var(--hair);
+  /* pan-y, not none: a vertical swipe must still scroll the page past the demo. */
+  touch-action: pan-y;
+  cursor: crosshair;
+}
+
+.demo-hint {
+  font-family: var(--mono);
+  font-size: 0.63rem;
+  color: var(--muted);
+  margin: 0.5rem 0 0;
+  line-height: 1.45;
+}
+
+.demo-controls {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.control-group > span {
+  font-family: var(--mono);
+  font-size: 0.63rem;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: var(--muted);
+}
+
+.control-group .btn-row { gap: 0.35rem; }
+
+.control-group .btn {
+  font-size: 0.66rem;
+  padding: 0.4rem 0.75rem;
+}
+
+
+/* ---------- cards ---------- */
+
+.card {
+  border: 1px solid var(--hair);
+  background: var(--panel);
+  padding: clamp(1.1rem, 3vw, 1.75rem);
+}
+
+.card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.6rem;
+}
+
+.card > p { color: var(--muted); margin: 0 0 1.1rem; max-width: 58ch; }
+.card > p:last-child { margin-bottom: 0; }
+
+/* ---------- link grid ---------- */
+
+/* Each link is its own bordered tile with a real gap, rather than cells sharing a
+   1px gap over a coloured container. The shared-gap version looks tidier but only
+   survives while the number of links divides the column count — the moment it does
+   not, the leftover cells show up as grey blocks. This list will keep growing, so
+   it has to tolerate any count. */
+.link-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: 0.6rem;
+}
+
+.link-grid li { display: flex; }
+
+.link-grid a {
+  flex: 1;
+  padding: 0.9rem 1.1rem 1rem;
+  border: 1px solid var(--hair);
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.link-grid a:hover { background: var(--panel); border-color: var(--accent); }
+
+.link-grid .k {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+.link-grid .t {
+  display: block;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.link-grid .d {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.link-grid .t::after {
+  content: " ↗";
+  color: var(--muted);
+  font-size: 0.8em;
+}
+
+.link-grid a[data-internal] .t::after { content: " →"; }
+
+/* ---------- CV entries ---------- */
+
+.cv-group { margin: 0 0 clamp(2rem, 4vw, 3rem); }
+.cv-group:last-child { margin-bottom: 0; }
+
+.entry {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: 0 clamp(1rem, 3vw, 2rem);
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--hair);
+}
+
+.entry:last-child { border-bottom: 1px solid var(--hair); }
+
+@media (max-width: 40rem) {
+  .entry { grid-template-columns: minmax(0, 1fr); gap: 0.35rem; }
+}
+
+.entry .when {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  padding-top: 0.2rem;
+  white-space: nowrap;
+}
+
+.entry .what h3 {
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.15rem;
+}
+
+.entry .what h3 a { text-decoration-color: var(--accent); text-underline-offset: 0.2em; }
+.entry .what h3 a:hover { color: var(--accent); }
+
+.entry .where {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0 0 0.6rem;
+}
+
+.entry .where .place::before { content: " · "; }
+
+.entry ul {
+  margin: 0;
+  padding-left: 1.05rem;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.entry ul li { margin-bottom: 0.25rem; }
+.entry ul li:last-child { margin-bottom: 0; }
+
+.entry .tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: 0.7rem 0 0;
+  padding: 0;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--muted);
+}
+
+.entry .tags li { border: 1px solid var(--hair); padding: 0.24rem 0.5rem; }
+
+/* Publications */
+.pub-list { list-style: none; margin: 0; padding: 0; counter-reset: pub; }
+
+.pub-list li {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  gap: 0 0.5rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--hair);
+  font-size: 0.94rem;
+}
+
+.pub-list li:last-child { border-bottom: 1px solid var(--hair); }
+
+.pub-list li::before {
+  counter-increment: pub;
+  content: "[" counter(pub) "]";
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  padding-top: 0.2rem;
+}
+
+.pub-list .meta { display: block; color: var(--muted); font-size: 0.86rem; margin-top: 0.2rem; }
+.pub-list .meta b { color: var(--ink); font-weight: 600; }
+.pub-list .meta a { text-decoration-color: var(--accent); text-underline-offset: 0.2em; }
+.pub-list .meta a:hover { color: var(--accent); }
+.pub-list cite { font-style: italic; }
+
+/* Skills / languages */
+.fact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1.25rem 2rem;
+  margin: 0;
+}
+
+.fact-grid dt {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+}
+
+.fact-grid dd { margin: 0; color: var(--muted); font-size: 0.94rem; }
+
+/* ---------- footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--hair);
+  padding-block: 2rem 2.5rem;
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.footer-id {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.footer-id p { margin: 0; }
+
+/* The family arms. Small and quiet on purpose — it belongs here the way a
+   bookplate does, not as a logo. The artwork is cut out to transparency
+   (tools/make_crest.py), so it sits on either theme without a plate behind it. */
+.crest {
+  width: 2.75rem;
+  height: auto;
+  flex: none;
+  display: block;
+}
+
+.site-footer .colophon { margin: 0; }
+
+.site-footer a { color: var(--ink); text-decoration-color: var(--accent); text-underline-offset: 0.2em; }
+.site-footer a:hover { color: var(--accent); }
+
+.site-footer .colophon {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+/* ---------- print (the CV page) ---------- */
+
+@media print {
+  .site-header, .site-footer, .skip, .no-print { display: none !important; }
+  :root { --ash: #fff; --panel: #fff; --ink: #000; --muted: #444; --hair: #bbb; --accent: #000; }
+  body { font-size: 10.5pt; }
+  .band { padding-block: 0.5rem; }
+  .entry { break-inside: avoid; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; color: #666; }
 }

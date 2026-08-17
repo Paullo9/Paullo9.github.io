@@ -16,12 +16,12 @@ runtime, no web fonts, no analytics, no cookies, no third-party requests.
 | `scan.js` | Hotspots and camera positions for the 3D lab scan. |
 | `demo.js` | The interactive 4D-STEM demo. |
 | `vendor/` | `<model-viewer>`, vendored rather than loaded from a CDN. |
-| `media/TEM/` | The LiDAR scan of the lab, raw and cropped. |
-| `media/paul/` | The family arms and the CV PDF. |
-| `media/demo/` | Sprite atlas and manifest for the demo. |
-| `tools/` | Dev-only generators for everything in `media/`. Nothing at runtime uses them. |
+| `assets/` | The LiDAR scan of the lab, raw and cropped. |
+| `assets/` | The family arms and the CV PDF. |
+| `assets/` | Sprite atlas and manifest for the demo. |
+| `tools/` | Dev-only generators for everything in `assets/`. Nothing at runtime uses them. |
 
-Everything under `media/demo/` and `media/index/` is derived and regenerable. If
+Everything under `assets/` and `assets/` is derived and regenerable. If
 something there looks wrong, fix the generator in `tools/`, not the artefact.
 
 Local preview:

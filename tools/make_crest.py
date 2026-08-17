@@ -6,7 +6,7 @@ helm, crown, three flowers — collapses into a smudge, while a gold lion on a b
 field still reads. Both were rendered and compared before choosing.
 
 
-The source (`media/paul/Wappen_GPT.png`) sits on a dark radial glow rather than on
+The source (`assets/crest-source.png`) sits on a dark radial glow rather than on
 transparency, which would look like a mistake on the light theme. Keying it out by
 colour does not work: the artwork's own outlines are as dark as the background.
 
@@ -18,7 +18,7 @@ outline is always enclosed by the regions it separates.
 Dev-only. Run with ~/miniconda3/envs/py4dstem/bin/python.
 
 The source PNG is gitignored — it is 2.5 MB and never served, while everything it
-produces is committed. Put it back at media/paul/Wappen_GPT.png before running.
+produces is committed. Put it back at assets/crest-source.png before running.
 Do not "optimise" it to a palette first: the mask is built from brightness
 thresholds, and quantising shifts the edge pixels enough to change the crop.
 """
@@ -29,8 +29,8 @@ from PIL import Image
 from scipy import ndimage
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC = os.path.join(ROOT, 'media', 'paul', 'Wappen_GPT.png')
-OUT = os.path.join(ROOT, 'media', 'paul')
+SRC = os.path.join(ROOT, 'assets', 'crest-source.png')
+OUT = os.path.join(ROOT, 'assets')
 
 src = Image.open(SRC).convert('RGB')
 rgb = np.asarray(src).astype(np.float32) / 255.0
@@ -85,18 +85,45 @@ print(f'source {src.size} -> cropped {crest.size}')
 width = 256
 height = round(crest.height * width / crest.width)
 small = crest.resize((width, height), Image.LANCZOS)
-small.quantize(colors=64, method=Image.FASTOCTREE).save(f'{OUT}/crest-{width}.png', optimize=True)
-print(f'  crest-{width}.png: {os.path.getsize(f"{OUT}/crest-{width}.png") / 1e3:.0f} kB')
+small.quantize(colors=64, method=Image.FASTOCTREE).save(f'{OUT}/crest.png', optimize=True)
+print(f'  crest.png: {os.path.getsize(f"{OUT}/crest.png") / 1e3:.0f} kB')
 
 
 # ---- the shield alone, squared, for favicons ----
 
-ICONS = os.path.join(ROOT, 'media', 'index')
+ICONS = os.path.join(ROOT, 'assets')
 os.makedirs(ICONS, exist_ok=True)
 
-W, H = crest.size
-shield = crest.crop((round(W * 0.24), round(H * 0.55), round(W * 0.76), H))
-side = max(shield.size)
+# Find the shield rather than guessing a crop box. Fixed fractions of the image
+# sliced through the helm at the top and clipped the shield's shoulders at the
+# sides. The shield is the one large solid-blue area, so: take every strongly
+# blue pixel, keep the largest connected blob, and use its bounding box.
+arr = np.asarray(crest).astype(np.int16)
+r, g, b, a = arr[..., 0], arr[..., 1], arr[..., 2], arr[..., 3]
+blue = (a > 128) & (b > 110) & (b - r > 45) & (b - g > 15)
+
+labels, n = ndimage.label(blue)
+assert n, 'no blue region found — has the artwork changed?'
+sizes = ndimage.sum(blue, labels, range(1, n + 1))
+field = labels == (int(np.argmax(sizes)) + 1)
+
+# Cropping a rectangle is not enough: the helm sits directly above the shield and
+# bleeds into the top of the box. So mask to the shield's own silhouette — fill the
+# blue field's holes to recover the lion and the star, then grow it just past the
+# black outline that rings the shield.
+solid = ndimage.binary_fill_holes(field)
+solid = ndimage.binary_dilation(solid, structure=disk(11))
+
+masked = np.asarray(crest).copy()
+masked[..., 3] = (masked[..., 3] * solid).astype(np.uint8)
+shield_full = Image.fromarray(masked, mode='RGBA')
+
+box = shield_full.getbbox()
+shield = shield_full.crop(box)
+print(f'shield masked and cropped to {shield.size}')
+
+# Square canvas, slightly larger than the shield so it does not touch the edges.
+side = round(max(shield.size) * 1.08)
 square = Image.new('RGBA', (side, side), (0, 0, 0, 0))
 square.paste(shield, ((side - shield.width) // 2, (side - shield.height) // 2), shield)
 
@@ -107,7 +134,8 @@ def icon(size, path):
     print(f'  {os.path.basename(path)}: {os.path.getsize(path) / 1e3:.0f} kB')
 
 
-# Only the sizes the pages actually link. Anything else is dead weight.
-for size in (16, 32, 512):
+# Only the sizes the pages actually link. A 32 covers the tab at 1x and 2x and
+# browsers downscale it cleanly, so there is no separate 16.
+for size in (32, 512):
     icon(size, f'{ICONS}/favicon-{size}.png')
 icon(180, f'{ICONS}/apple-touch-icon.png')

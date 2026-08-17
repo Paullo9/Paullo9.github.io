@@ -10,7 +10,7 @@ are compacted and re-indexed, and the buffer is rewritten. Textures, materials
 and samplers are passed through untouched.
 
 Dev-only. Run with any python3 that has numpy:
-    python3 tools/crop_glb.py --x-min -2.9 --out media/TEM/TEM_room.glb
+    python3 tools/crop_glb.py --x-min -2.9 --out assets/lab.glb
 """
 import argparse
 import json
@@ -59,8 +59,8 @@ def read_accessor(gltf, blob, index):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--src', default='media/TEM/TEM_polycam.glb')
-    ap.add_argument('--out', default='media/TEM/TEM_room.glb')
+    ap.add_argument('--src', default='assets/lab-raw.glb')
+    ap.add_argument('--out', default='assets/lab.glb')
     ap.add_argument('--x-min', type=float, default=-np.inf)
     ap.add_argument('--x-max', type=float, default=np.inf)
     ap.add_argument('--y-min', type=float, default=-np.inf)

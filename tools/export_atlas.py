@@ -21,7 +21,7 @@ import numpy as np
 from PIL import Image
 
 SRC = glob.glob('/Users/paullobpreis/GitHub/mac4DSTEM_Organization/website/datacube/*.h5')[0]
-OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'media', 'demo')
+OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets')
 
 SCAN_BIN = 3     # 200 -> 66 (198 used, 2 rows/cols dropped). Atlas 2112x2112.
 
@@ -66,8 +66,8 @@ print(f'atlas   {atlas.shape[1]}x{atlas.shape[0]} px')
 # unrelated patterns -- and lossless WebP measured *larger* here than optimized
 # PNG (2.64 vs 2.49 MB), so there is nothing to trade.
 img = Image.fromarray(atlas, mode='L')
-img.save(f'{OUT}/atlas.png', optimize=True)
-print(f'  atlas.png: {os.path.getsize(f"{OUT}/atlas.png") / 1e6:.2f} MB')
+img.save(f'{OUT}/demo-atlas.png', optimize=True)
+print(f'  demo-atlas.png: {os.path.getsize(f"{OUT}/demo-atlas.png") / 1e6:.2f} MB')
 
 manifest = {
     'scan':     {'x': Rx, 'y': Ry},
@@ -79,7 +79,7 @@ manifest = {
     'compand': {'knee': knee, 'vmax': vmax, 'denom': denom},
     'sample': 'Ni65Cu35 alloy',
 }
-with open(f'{OUT}/manifest.json', 'w') as f:
+with open(f'{OUT}/demo-manifest.json', 'w') as f:
     json.dump(manifest, f, indent=2)
 
 # ---- sanity check: the round trip must not move an ADF sum ----

@@ -16,8 +16,8 @@
   const root = document.getElementById('demo');
   if (!root) return;
 
-  const ATLAS = 'media/demo/atlas.png';
-  const MANIFEST = 'media/demo/manifest.json';
+  const ATLAS = 'assets/demo-atlas.png';
+  const MANIFEST = 'assets/demo-manifest.json';
 
   const el = (id) => document.getElementById(id);
   const loadBtn = el('demo-load');

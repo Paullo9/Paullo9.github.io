@@ -16,8 +16,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ICONS = os.path.join(ROOT, 'media', 'index')
-DEMO = os.path.join(ROOT, 'media', 'demo')
+ASSETS = os.path.join(ROOT, 'assets')
 
 INK = (18, 19, 22)
 ASH = (231, 233, 231)
@@ -30,13 +29,13 @@ SANS = '/System/Library/Fonts/HelveticaNeue.ttc'
 
 def mean_pattern():
     """Mean diffraction pattern of the cube, decoded back to linear units."""
-    with open(f'{DEMO}/manifest.json') as f:
+    with open(f'{ASSETS}/demo-manifest.json') as f:
         m = json.load(f)
     Rx, Ry = m['scan']['x'], m['scan']['y']
     Qx, Qy = m['detector']['x'], m['detector']['y']
     c = m['compand']
 
-    atlas = np.asarray(Image.open(f'{DEMO}/atlas.png').convert('L'))
+    atlas = np.asarray(Image.open(f'{ASSETS}/demo-atlas.png').convert('L'))
     cube = atlas.reshape(Ry, Qy, Rx, Qx).transpose(0, 2, 1, 3)
     lut = c['knee'] * np.expm1(np.arange(256) / 255.0 * c['denom'])
     return lut[cube].mean(axis=(0, 1))
@@ -72,5 +71,5 @@ d.text((80, 232), 'Paul Lobpreis', font=name, fill=ASH)
 d.text((80, 342), 'Materials scientist in Siegen', font=sub, fill=MUTED)
 d.text((80, 452), 'PAULLOBPREIS.COM', font=tag, fill=ACCENT)
 
-card.save(f'{ICONS}/og.jpg', quality=88, optimize=True, progressive=True)
-print(f'og.jpg: {os.path.getsize(f"{ICONS}/og.jpg") / 1e3:.0f} kB')
+card.save(f'{ASSETS}/og.jpg', quality=88, optimize=True, progressive=True)
+print(f'og.jpg: {os.path.getsize(f"{ASSETS}/og.jpg") / 1e3:.0f} kB')

@@ -9,6 +9,6 @@ CLAUDE.md
 _build
 
 # Generator sources that are never served. tools/make_crest.py needs this file
-# present locally; the artwork it produces (media/paul/crest-256.png and the
+# present locally; the artwork it produces (assets/crest.png and the
 # favicons) is committed, so a clone builds the site fine without it.
-media/paul/Wappen_GPT.png
+assets/crest-source.png
